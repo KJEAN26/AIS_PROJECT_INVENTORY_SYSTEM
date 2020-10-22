@@ -1,0 +1,23 @@
+{
+  "name": "ais_project_inventory_system",
+  "version": "1.0.0",
+  "description": "architecture project",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aparece1241/AIS_PROJECT.git"
+  },
+  "author": "group 3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aparece1241/AIS_PROJECT/issues"
+  },
+  "homepage": "https://github.com/aparece1241/AIS_PROJECT#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
