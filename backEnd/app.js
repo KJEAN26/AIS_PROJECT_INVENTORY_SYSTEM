@@ -2,6 +2,16 @@ const express = require('express');
 const app = express();
 const {port} = require('./config');
 const conn = require('./connection/connection');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+//headers
+app.use(cors());
+
+//Parse the body
+app.use(bodyParser.urlencoded({extended: false }));
+app.use(bodyParser.json());
+
 
 //Verify mongodb connection
 conn.mongoDBconnection()
@@ -12,25 +22,9 @@ conn.mongoDBconnection()
         console.log(err.message);
     });
 
-
-    app.get('/',(req, res)=>{
-        res.send("test");
-    });
-
-    //test
-
-    app.get('/retrieve_users', (req,res)=>{
-        Users.find({},(error, users)=>{
-            if(error){
-                return res.send(error);
-            }
-            return res.json({"data": users});
-        });
-    });
-
-    
-    app.post('/create_user',);
-
+//use user routes
+const userRoutes = require('./routes/UserRoutes');
+app.use('/user/',userRoutes);
 
 
 

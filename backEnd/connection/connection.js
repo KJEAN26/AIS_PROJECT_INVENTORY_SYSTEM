@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { dbUrl } = require('../config');
 
 const mongoDBconnection = () => {
-    mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
     const db = mongoose.connection;
     return new Promise((resolve, reject) => {
         db.once('open', () => {
