@@ -16,7 +16,7 @@ module.exports = {
 
 
     updateUser(req, res) {
-        const userId = req.body.id;
+        const userId = req.params.id
         const userInfos = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
@@ -27,15 +27,18 @@ module.exports = {
             email: req.body.email,
         };
 
-        Users.findOneAndUpdate({ _id: userId }, { $set: userInfos }, (error, user) => {
+        Users.findOneAndUpdate({ _id: userId }, { $set: userInfos }, {new:true},(error, user) => {
             if (error) {
                 return res.status(500).send(error);
             }
             return res.json({ "last_upated_user": user });
         });
     },
+
+    
+
     deleteUser(req, res) {
-        const userId = req.body.id;
+        const userId = req.params.id
         const deletedDate = new Date();
         Users.findOneAndUpdate({ _id: userId }, { $set: { deletedAt: deletedDate } }, (error, user) => {
             if (error) {

@@ -28,15 +28,21 @@ $(document).ready(function () {
         });
     };
 
-    apiRequest("http://localhost:3000/user/all", "get").then((result) => {
+    //get all user
+    const getAll = ()=>( apiRequest("http://localhost:3000/user/all", "get").then((result) => {
+        console.log('I was here');
+        $("#user_container").empty();
         result.data.forEach(element => {
-            console.log(element);
-            $("#user_container").append(`<p>${element.firstname}</p>`);
+            if(!element.deletedAt){
+                $("#user_container").append(`<p>${element.firstname}</p><input type="button" id = '${element._id}' value='delete' class="del">`);
+            }           
         });
     }).catch((error) => {
         console.log(error);
-    });
+    }));
+    getAll();
 
+    //add new user
     $("#sub").click(()=>{
         const data = {
             firstname: $("#fname").val(),
@@ -49,8 +55,24 @@ $(document).ready(function () {
         console.log(data);
         apiRequest("http://localhost:3000/user/add", "post", data).then((result)=>{
             console.log(result);
+            getAll();
         }).catch((error)=>{
             console.log(error);
         });
     });
-})
+
+    //delete user
+
+    $("#user_container").on('click','input.del',(e)=>{
+        let userId = e.currentTarget.id;
+        apiRequest(`http://localhost:3000/user/delete/${userId}`,"delete")
+        .then((result)=>{
+            alert("deleted");
+            getAll();
+            console.log(result);
+        }).catch((error)=>{
+            console.log(error);
+        });
+    });
+
+});
