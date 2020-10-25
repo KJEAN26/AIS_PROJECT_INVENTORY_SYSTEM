@@ -3,10 +3,14 @@ const app = express();
 const {port} = require('./config');
 const conn = require('./connection/connection');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+var cors = require('cors');
+const path = require('path');
 
 //headers
 app.use(cors());
+
+//set static files
+app.use('/static',express.static(path.join(__dirname,'Public')));
 
 //Parse the body
 app.use(bodyParser.urlencoded({extended: false }));
@@ -22,9 +26,24 @@ conn.mongoDBconnection()
         console.log(err.message);
     });
 
+//test route
+app.get('/',(req, res)=>{
+    res.sendFile(path.join(__dirname,"/views/register.html"));
+});
+
+
+//go to dashboards
+app.get('/dashboard',(req, res)=>{
+    res.sendFile(path.join(__dirname,"/views/dashboard.html"));
+});
+
 //use user routes
 const userRoutes = require('./routes/UserRoutes');
-app.use('/user/',userRoutes);
+app.use('/user',userRoutes);
+
+//use product routes
+const productRoutes = require('./routes/ProductRoutes');
+app.use('/product',productRoutes);
 
 
 

@@ -34,6 +34,7 @@ $(document).ready(function () {
         $("#user_container").empty();
         result.data.forEach(element => {
             if(!element.deletedAt){
+                console.log(element);
                 $("#user_container").append(`<p>${element.firstname}</p><input type="button" id = '${element._id}' value='delete' class="del">`);
             }           
         });
@@ -41,7 +42,7 @@ $(document).ready(function () {
         console.log(error);
     }));
     getAll();
-
+    
     //add new user
     $("#sub").click(()=>{
         const data = {
