@@ -28,8 +28,20 @@ const apiRequest = (url, method, props) => {
 
 
 
-//helper function 
+//helper functions 
 
-function reseter(classOrIds){
-
+function resetInputFields(classOrIds){
+    //reset input fields here
 }
+
+function editUrl(url){
+    let newUrl = "";
+    for(let index = (url.length-1); index > -1; index--){
+        if(url[index] === "/"){
+            newUrl = url.substr(0,22);
+            break;
+        }
+    }
+    return newUrl;
+}
+
