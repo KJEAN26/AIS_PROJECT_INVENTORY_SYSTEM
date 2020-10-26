@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 const path = require('path');
 
-//headers
+//Allow headers
 app.use(cors());
 
 //set static files
@@ -38,6 +38,12 @@ app.use('/user',userRoutes);
 const productRoutes = require('./routes/ProductRoutes');
 app.use('/product',productRoutes);
 
+//use purchase routes
+const purchaseRoutes = require("./routes/PurchaseRoutes");
+app.use('/purchase',purchaseRoutes);
 
+//use transaction routes
+const transactionRoutes = require('./routes/TransactionRoutes');
+app.use('/transaction',transactionRoutes);
 
 
