@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +26,8 @@
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-product-hunt" aria-hidden="true"><br></i>Products</a>
     </div>
 
+<body>
+    <h1>This is Register</h1>
     <!-- do not change the id's -->
     <!-- sample login -->
     <div>
@@ -37,7 +40,34 @@
         <input type="number" placeholder="role" id="role"><br>
         <input type="submit" id="sub" value="Submit">
     </div>
-    
+
     <script src="/static/js/main.js"></script>
+    <script>
+        $(document).ready(() => {ss
+
+            //executes when the user clicks submit
+            // this function will add new user
+            $("#sub").click(() => {
+                const newUser = {
+                    firstname: $("#fname").val(),
+                    lastname: $("#lname").val(),
+                    middlename: $("#mname").val(),
+                    password: $("#pass").val(),
+                    email: $("#email").val(),
+                    age: $("#age").val(),
+                    roleId: $("#role").val()
+                };
+
+                apiRequest("http://localhost:3000/user/add", "post", newUser)
+                    .then((resolve) => {
+                        alert("added new user");
+                        console.log(resolve);
+                    }).catch((rejected) => {
+                        console.log(rejected);
+                    });
+            });
+        });
+    </script>
 </body>
+
 </html>
