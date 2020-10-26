@@ -2,79 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- import jquery-3 -->
-      <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="static/css/style.css">
-<title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- import jquery-3 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <title>Home</title>
 </head>
 
 <body>
   <div class="w3-container w3-teal">
     <center>
-    <h1>SHOP INVENTORY SYSTEM</h1>
+      <h1>SHOP INVENTORY SYSTEM</h1>
     </center>
   </div>
   <!-- Sidebar -->
   <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
     <h3 class="w3-bar-item">Menu</h3>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-tachometer" aria-hidden="true"><br></i>Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-tachometer"
+        aria-hidden="true"><br></i>Dashboard</a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hand-spock-o"
+        aria-hidden="true"><br></i>Stocks</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-product-hunt" aria-hidden="true"><br></i>Products</a>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Dropdown</button>
-    <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <button class="dropdown-btn"><i class="fa fa-product-hunt" aria-hidden="true"></i>Products
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
     </div>
   </div>
+
   <!-- Page Content -->
   <div style="margin-left:15%">
-  
 
-  <div class="w3-container">
-  <h2></h2>
-  <p></p>
-  <p></p>
+
+    <div class="w3-container">
+      <h2></h2>
+      <p></p>
+      <p></p>
+    </div>
+
   </div>
-  
-  </div>
-        
-  </body>
 
-  <script src="/static/js/main.js"></script>
-  <script>
-    $(document).ready(() => {
+</body>
 
-      /**
-       * this function will get
-       * all the users
-       * @params none
-      */
-     
-      function getAllUsers() {
-        apiRequest("/user/all", "get")
-          .then((resolve) => {
-            console.log(resolve);
-            resolve.data.forEach(element => {
-              //partial
-              $("body").append(`<p>${element.firstname}</p>`);
-            });
-          }).catch((rejected) => {
-            console.log(rejected);
-          });
+<script src="/static/js/main.js">
+  /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
       }
-
-      getAllUsers();
-
     });
-  </script>
+  }</script>
 </body>
 
 </html>
