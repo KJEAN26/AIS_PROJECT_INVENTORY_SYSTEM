@@ -31,6 +31,7 @@ $(document).ready(function () {
 
     //add user
     $("#sub").click(() => {
+
         const newUser = {
             firstname: $("#fname").val(),
             lastname: $("#lname").val(),
@@ -49,4 +50,18 @@ $(document).ready(function () {
             console.log(rejected);
         });
     });
+
+
+    //get all users
+
+    // apiRequest("http://localhost:3000/user/all","get")
+    // .then((resolve)=>{
+    //     console.log(resolve);
+    //     resolve.data.forEach(element => {
+    //         $("body").append(`<p>${element.firstname}</p>`);
+    //     });
+    // }).catch((rejected)=>{
+    //     console.log(rejected);
+    // });
+    
 });

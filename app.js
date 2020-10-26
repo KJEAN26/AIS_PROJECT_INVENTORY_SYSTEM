@@ -27,14 +27,14 @@ conn.mongoDBconnection()
     });
 
 //test route
-app.get('/',(req, res)=>{
+app.get('/register',(req, res)=>{
     res.sendFile(path.join(__dirname,"/views/register.html"));
 });
 
 
 //go to dashboards
-app.get('/dashboard',(req, res)=>{
-    res.sendFile(path.join(__dirname,"/views/dashboard.html"));
+app.get('/home',(req, res)=>{
+    res.sendFile(path.join(__dirname,"/views/home.html"));
 });
 
 //use user routes
