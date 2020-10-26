@@ -26,16 +26,9 @@ conn.mongoDBconnection()
         console.log(err.message);
     });
 
-//test route
-app.get('/register',(req, res)=>{
-    res.sendFile(path.join(__dirname,"/views/register.html"));
-});
-
-
-//go to dashboards
-app.get('/home',(req, res)=>{
-    res.sendFile(path.join(__dirname,"/views/home.html"));
-});
+//use direct routes
+const directRoutes = require('./routes/DirectRoutes');
+app.use(directRoutes);
 
 //use user routes
 const userRoutes = require('./routes/UserRoutes');
