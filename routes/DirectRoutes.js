@@ -7,7 +7,7 @@ const DirectRoute = require('../controllers/DirectController');
 //Home route
 Router.get('/home',DirectRoute.goToHome);
 
-//Login route
+//get login page route
 Router.get('/login', DirectRoute.gotToLogin);
 
 //Register route

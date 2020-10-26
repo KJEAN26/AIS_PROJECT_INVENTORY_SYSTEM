@@ -9,6 +9,7 @@ const apiRequest = (url, method, props) => {
         let ajaxConfig = {
             url: `${baseURL}${url}`,
             type: method,
+            headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
             success: function (response) {
                 //return the data in then clause
                 resolve(response);
