@@ -152,6 +152,10 @@
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
+
+    //gets the base url
+    const baseUrl = editUrl(window.location.href);
+
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
@@ -171,8 +175,9 @@
 
     //redirect route to dashboard
     $("#dashboard").click(()=>{
-      window.location.replace("http://localhost:3000/home");
+      window.location.href = `${baseUrl}home`;
     });
+
   });
 
 
