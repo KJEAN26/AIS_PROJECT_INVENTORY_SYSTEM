@@ -1,53 +1,172 @@
-
-/* column */
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
+/* Graph*/
+ #chart-container {
+  height: 600px;
+  width: 800px;
+  margin-top:120px;
+}
+  /*dashboard cards*/
+  @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500,700");
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+  .gr-1 {
+    background: linear-gradient(170deg, #01e4f8 0%, #1d3ede 100%);
   }
   
-  /* Style the header */
-  .header {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
+  .gr-2 {
+    background: linear-gradient(170deg, #b4ec51 0%, #429321 100%);
   }
-
-  /* Style the topnav links */
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  
+  .gr-3 {
+    background: linear-gradient(170deg, #c86dd7 0%, #3023ae 100%);
   }
-
-  /* Change color on hover */
-  .topnav a:hover {
-    background-color: #ddd;
+  
+  * {
+    transition: 0.5s;
+  }
+  
+  .h-100 {
+    height: 100vh !important;
+  }
+  
+  .align-middle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .col-hover {
+    padding-left: 0;
+  }
+  .col-hover:hover .card .txt {
+    margin-left: 1rem;
+  }
+  .col-hover:hover .card .txt h1,
+  .col-hover:hover .card .txt p {
+    color: white;
+    opacity: 1;
+  }
+  .col-hover:hover a {
+    color: white;
+  }
+  .col-hover:hover a:after {
+    width: 10%;
+  }
+  
+  .card {
+    min-height: 170px;
+    margin: 0;
+    padding: 1.7rem 1.2rem;
+    border: none;
+    border-radius: 0;
     color: black;
+    letter-spacing: 0.05rem;
+    font-family: "Oswald", sans-serif;
+    box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
   }
-
-  /* Create three equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 33.33%;
-    padding: 15px;
+  .card .txt {
+    margin-left: -3rem;
+    z-index: 1;
   }
-
-  /* Clear floats after the columns */
-  .row:after {
+  .card .txt h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  .card .txt p {
+    font-size: 0.7rem;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0rem;
+    margin-top: 33px;
+    opacity: 0;
+    color: white;
+  }
+  .card a {
+    z-index: 3;
+    font-size: 0.7rem;
+    color: black;
+    margin-left: 1rem;
+    position: relative;
+    bottom: -0.5rem;
+    text-transform: uppercase;
+  }
+  .card a:after {
     content: "";
-    display: table;
-    clear: both;
+    display: inline-block;
+    height: 0.5em;
+    width: 0;
+    margin-right: -100%;
+    margin-left: 10px;
+    border-top: 1px solid white;
+    transition: 0.5s;
   }
+  .card .ico-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+  }
+  .card i {
+    position: relative;
+    right: -50%;
+    top: 60%;
+    font-size: 12rem;
+    line-height: 0;
+    opacity: 0.2;
+    color: white;
+    z-index: 0;
+  }
+  /* footer */
+  .footer-bs {
+	padding: 60px 40px;
+	color: rgba(255,255,255,1.00);
+	margin-bottom: 20px;
+	border-bottom-right-radius: 6px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 6px;
+}
+.footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px; }
+.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
+.footer-bs .footer-brand h2 { margin:0px 0px 10px; }
+.footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
 
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media screen and (max-width:600px) {
-    .column {
-      width: 100%;
-    }
-  }
+.footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
+.footer-bs .footer-nav ul.pages li { padding:5px 0px;}
+.footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
+.footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+.footer-bs .footer-nav h4 {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	margin-bottom:10px;
+}
+
+.footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
+.footer-bs .footer-nav ul.list li { padding:5px 0px;}
+.footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+.footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+.footer-bs .footer-social ul { list-style:none; padding:0px; }
+.footer-bs .footer-social h4 {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+.footer-bs .footer-social li { padding:5px 4px;}
+.footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
+.footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+.footer-bs .footer-ns h4 {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	margin-bottom:10px;
+}
+.footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+@media (min-width: 768px) {
+	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
+}
+  
