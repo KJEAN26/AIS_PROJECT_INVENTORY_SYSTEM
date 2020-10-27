@@ -98,6 +98,9 @@
 <script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
 <script src="/static/js/main.js"></script>
 <script>
+  $(document).ready(() => {
+    //gaurd
+    protectedPages();
 
   const dataSource = {
     chart: {
@@ -151,7 +154,7 @@
   });
 
 
-  $(document).ready(() => {
+
     //gets the base url
     const baseUrl = editUrl(window.location.href);
 
@@ -172,13 +175,21 @@
     }
 
 
+    //test
+    apiRequest('/user/all', "get")
+      .then((resolve) => {
+        console.log(resolve);
+      }).catch((error) => {
+        console.log(error);
+      });
+
     //redirect route to dashboard
     $("#dashboard").click(() => {
       window.location.href = `${baseUrl}home`;
     });
 
   });
-
+  
 
 </script>
 </body>

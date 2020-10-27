@@ -25,14 +25,14 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <center>
-                        <h3>Sign Up</h3>
-                        <h6 style="color:whitesmoke">Please fill in this form to create an account.</h6>
-                       </center>
+                    <p id="error"></p>
+                    <h3>Sign Up</h3>
+                    <h6 style="color:whitesmoke">Please fill in this form to create an account.</h6>
                 </div>
                 <div class="card-body">
                     <form>
@@ -41,13 +41,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Firstname" required>
+                                <input type="text" class="form-control" id="firstname" placeholder="Firstname" required>
                             </div>
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Lastname" required>
+                                <input type="text" class="form-control" id="lastname" placeholder="Lastname" required>
                             </div>
 
                         </div>
@@ -55,39 +55,39 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Middlename" required>
+                            <input type="text" class="form-control" id="middlename" placeholder="Middlename" required>
 
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Email" required>
+                            <input type="text" class="form-control" id="email" placeholder="Email" required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Age" required>
+                            <input type="number" class="form-control" id="age" placeholder="Age" required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="number" class="form-control" placeholder="Role" required>
+                            <input type="number" class="form-control" id="role" placeholder="Role" required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Password" required>
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
                         </div>
 
                         <div class="row align-items-center remember">
                             <input type="checkbox">I accept the Terms of Use and Privacy Policy.
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Sign Up" class="btn float-right login_btn">
+                            <input type="button" id="sub" value="Sign Up" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>
@@ -96,50 +96,67 @@
                         Already have an account?<a href="#"> </a>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <a href="login.html">Sign In here</a>
+                        <a href="#" id="login">Sign In here</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- do not change the id's -->
-    <!-- sample login -->
-    <!-- <div>
-        <input type="text" placeholder="firstname" id="fname"><br>
-        <input type="text" placeholder="lastname" id="lname"><br>
-        <input type="text" placeholder="middlename" id="mname"><br>
-        <input type="text" placeholder="password" id="pass"><br>
-        <input type="text" placeholder="email" id="email"><br>
-        <input type="number" placeholder="age" id="age"><br>
-        <input type="number" placeholder="role" id="role"><br>
-        <input type="submit" id="sub" value="Submit">
-    </div> -->
 
     <script src="/static/js/main.js"></script>
     <script>
         $(document).ready(() => {
+            //get the edited base url
+            const baseUrl = editUrl(window.location.href);
+
+            //gaurd
+            // protectedPages();
 
             //executes when the user clicks submit
             // this function will add new user
             $("#sub").click(() => {
-                const newUser = {
-                    firstname: $("#fname").val(),
-                    lastname: $("#lname").val(),
-                    middlename: $("#mname").val(),
-                    password: $("#pass").val(),
-                    email: $("#email").val(),
-                    age: $("#age").val(),
-                    roleId: $("#role").val()
-                };
+                let errors = {};
 
-                apiRequest("http://localhost:3000/user/add", "post", newUser)
-                    .then((resolve) => {
-                        alert("added new user");
-                        console.log(resolve);
-                    }).catch((rejected) => {
-                        console.log(rejected);
-                    });
+                //fields to be validate
+                let firstname = $("#firstname").val();
+                let lastname = $("#lastname").val();
+                let email = $("#email").val();
+                let age = $("#age").val();
+                let role = $("#role").val();
+                let password = $("#password").val();
+
+                const newUser = {};
+                (isValidNames(firstname)) ? newUser["firstname"] = firstname : errors["firstname"] = "First name is not valid";
+                (isValidNames(lastname)) ? newUser["lastname"] = lastname : errors["lastname"] = "Last name is not valid";
+                newUser["middlename"] = $('#middlename').val();
+                (isEmailValid(email)) ? newUser["email"] = email : errors["email"] = "Email is not valid";
+                (password)?newUser["password"] = password:errors["password"]="Password should'nt be empty";
+                (age) ? newUser["age"] = age : errors["age"] = "Age should'nt be empty";
+                (role) ? newUser["role"] = role : errors["role"] = "Role should'nt be empty";
+
+                if (Object.keys(errors).length > 0) {
+                    console.log(errors);
+                    //temporary
+                    for(let key of Object.keys(errors)){
+                        $("#error").append(`<p>${errors[key]}</p>`);
+                    }
+                }
+                else {
+                    apiRequest("/user/add", "post", newUser)
+                        .then((resolve) => {
+                            alert("added new user");
+                            console.log(resolve);
+                        }).catch((rejected) => {
+                            console.log(rejected);
+                        });
+                }
             });
+
+
+            //goto login
+            $("#login").on('click', () => {
+                window.location.href = `${baseUrl}login`;
+            })
         });
     </script>
 </body>

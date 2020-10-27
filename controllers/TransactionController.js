@@ -1,5 +1,5 @@
 //Import Transaction Model
-const Transaction = require("../models/TransationModel");
+const Transaction = require("../models/TransactionModel");
 
 //Import purchase Model (transaction is dependent on the model)
 const Purchase = require("../models/PurchaseModel");
