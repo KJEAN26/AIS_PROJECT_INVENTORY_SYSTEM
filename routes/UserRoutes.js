@@ -5,7 +5,8 @@ const Router = express.Router();
 const userController = require('../controllers/UserController');
 
 //authorization
-const AUTH = require('../middleware/LoginAuthorization');
+const AUTH = require('../middleware/DataAuthorization');
+
 //get all users
 Router.get("/all",AUTH.authorized,userController.getUsers);
 

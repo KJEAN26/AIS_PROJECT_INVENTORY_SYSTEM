@@ -8,7 +8,7 @@ const userSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     age: {type: Number, required: true},
-    roleId: {type: String, enum:['admin','employee'],required: true},
+    role: {type: String, enum:['admin','employee'],required: true},
     createdAt: {type: Date, default: new Date()},
     deletedAt:{type: Date, default: null},
 },{collection: 'users'});
