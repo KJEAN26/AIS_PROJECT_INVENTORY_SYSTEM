@@ -33,7 +33,7 @@
  
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
         <button class="dropdown-item" type="button">Profile</button>
-        <button class="dropdown-item" type="button">Log Out</button>
+        <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
     </div>
     <center>
@@ -119,7 +119,7 @@
 <script>
   $(document).ready(() => {
     //gaurd
-    protectedPages();
+    protectedPages("login","home");
 
   const dataSource = {
     chart: {
@@ -195,21 +195,30 @@
 
 
 
+
+
     //redirect route to dashboard
     $("#dashboard").click(() => {
       window.location.href = `${baseUrl}home`;
     });
-
+    // reirect to gadgets
     $("#gadgets").click(()=>{
       window.location.href = `${baseUrl}gadgets`;
     });
 
+    // redirect to groceries
     $("#groceries").click(()=>{
       window.location.href = `${baseUrl}groceries`;
     });
 
+    //redirect to clothes
     $("#clothes").click(()=>{
       window.location.href = `${baseUrl}clothes`;
+    });
+
+    $("#logout").on("click", ()=>{
+      localStorage.removeItem("token");
+      window.location.href= `${baseUrl}login`;
     });
 
   });

@@ -59,9 +59,11 @@ function editUrl(url) {
 }
 
 //protected page
-function protectedPages() {
+function protectedPages(partUrl,partUrl1) {
     if (!localStorage.getItem('token')) {
-        window.location.href = `${baseURL}/login`;
+        window.location.href = `${editUrl(window.location.href)}${partUrl}`;
+    }else{
+        window.location.href = `${editUrl(window.location.href)}${partUrl1}`;
     }
 }
 
