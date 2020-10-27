@@ -59,11 +59,9 @@ function editUrl(url) {
 }
 
 //protected page
-function protectedPages(partUrl,partUrl1) {
+function protectedPages(partUrl) {
     if (!localStorage.getItem('token')) {
         window.location.href = `${editUrl(window.location.href)}${partUrl}`;
-    }else{
-        window.location.href = `${editUrl(window.location.href)}${partUrl1}`;
     }
 }
 
