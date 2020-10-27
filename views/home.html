@@ -11,83 +11,24 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="static/css/style.css"> -->
   <link rel="stylesheet" href="static/css/style.css">
+  
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
   <title>Home</title>
 </head>
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  /* Style the header */
-  .header {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-  } 
-  /* Style the topnav links */
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change color on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Create three equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 33.33%;
-    padding: 15px;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media screen and (max-width:600px) {
-    .column {
-      width: 100%;
-    }
-  }
-  </style>
 <body>
   <div class="w3-container w3-teal">
     <center>
       <h1>SHOP INVENTORY SYSTEM</h1>
-      <!-- <div class="user">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">User
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Owner </a></li>
-          <li><a href="#">Admin</a></li>
-          <li><a href="#">Employee</a></li>
-        </ul>
-      </div> -->
   </div>
   </center>
   </div>
   <!-- Sidebar -->
-  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
     <h3 class="w3-bar-item">Menu</h3>
     <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
         aria-hidden="true"><br></i>Dashboard</a>
@@ -109,19 +50,24 @@
     <!--lay-out-->
     
 
+
   <!-- Page Content -->
   <div class="row" style="margin-left:3in;">
     <div class="column">
       <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
+        velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus
+        leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
     </div>
-    
+
     <div class="column">
       <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
+        velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus
+        leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
     </div>
-    
-    
+
+
   </div>
 
 </body>
@@ -150,7 +96,7 @@
     }
 
     //redirect route to dashboard
-    $("#dashboard").click(()=>{
+    $("#dashboard").click(() => {
       window.location.href = `${baseUrl}home`;
     });
 
