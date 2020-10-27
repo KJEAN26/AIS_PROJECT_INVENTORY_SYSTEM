@@ -1,11 +1,15 @@
 const jwt = require('jsonwebtoken');
 const accessTokenSecret = "thisisasecret!";
+const path = require('path');
+const basePath = path.dirname(__dirname);
+
 
 
 //exports the authentication
 module.exports = {
     //authorized
     authorized(req, res, next) {
+        console.log(req.headers);
         const authHeader = req.headers.authorization;
 
         if (authHeader) {
