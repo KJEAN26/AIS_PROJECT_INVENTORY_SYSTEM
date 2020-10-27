@@ -83,9 +83,7 @@
             password: $("#password").val()
           }
          
-          //validation of the inputed value
-          //check if the email is valid
-          //check if the password is valid
+          
           apiRequest("/user/login", "post", user_credential)
             .then((resolve) => {
               alert("Successfully login!");
