@@ -10,7 +10,11 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="static/css/style.css"> -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Home</title>
 </head>
@@ -94,9 +98,9 @@
     </button>
     <div class="dropdown">
       <ul>
-        <li><a href="#">Gadgets</a></li>
-        <li><a href="#">Groceries</a></li>
-        <li><a href="#">Clothes</a></li>
+        <li><a id="gadgets" href="#">Gadgets</a></li>
+        <li><a id="groceries" href="#">Groceries</a></li>
+        <li><a id="clothes" href="#">Clothes</a></li>
         
       </div>
       </ul>
@@ -104,34 +108,7 @@
 
     <!--lay-out-->
     
-    <!-- <div class="dropdown">
-      <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-      <div id="myDropdown" class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-    </div>
-  </div> -->
 
-  <!-- Page Content -->
-  <!-- <div style="margin-left:15%">
-
-
-    <div class="w3-container">
-      <h2></h2>
-      <p></p>
-      <p></p>
-     </div>-- -->
-  </div>
-
-
-  <div class="topnav">
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-  </div>
-  
   <!-- Page Content -->
   <div class="row" style="margin-left:3in;">
     <div class="column">
@@ -172,10 +149,21 @@
       });
     }
 
-
     //redirect route to dashboard
     $("#dashboard").click(()=>{
       window.location.href = `${baseUrl}home`;
+    });
+
+    $("#gadgets").click(()=>{
+      window.location.href = `${baseUrl}gadgets`;
+    });
+
+    $("#groceries").click(()=>{
+      window.location.href = `${baseUrl}groceries`;
+    });
+
+    $("#clothes").click(()=>{
+      window.location.href = `${baseUrl}clothes`;
     });
 
   });
