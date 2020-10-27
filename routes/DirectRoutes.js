@@ -19,6 +19,8 @@ Router.get('/gadgets', DirectRoute.gotToGadget);
 //grocery route
 Router.get('/groceries', DirectRoute.gotToGroceries);
 
-Router.get('/clothes', DirectRoute.gotToClothes);
+Router.get('/clothes', DirectRoute.gotToClothes
+
+);
 //export routes
 module.exports = Router;
