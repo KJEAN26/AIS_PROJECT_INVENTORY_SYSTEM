@@ -104,6 +104,7 @@
                 localStorage.setItem("token", resolve.access_token);
                 resetInputFields(["#email", "#password"]);
 
+
                 window.location.href = `${baseUrl}home`;
               }).catch((error) => {
                 if (error.responseJSON) {
