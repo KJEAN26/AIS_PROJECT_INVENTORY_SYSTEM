@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="static/css/style.css"> -->
   <link rel="stylesheet" href="static/css/style.css">
+  
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
   <title>Home</title>
 </head>
@@ -33,12 +39,18 @@
     </button>
     <div class="dropdown">
       <ul>
-        <li><a href="#">Gadgets</a></li>
-        <li><a href="#">Groceries</a></li>
-        <li><a href="#">Clothes</a></li>
-    </div>
-    </ul>
-  </div>
+        <li><a id="gadgets" href="#">Gadgets</a></li>
+        <li><a id="groceries" href="#">Groceries</a></li>
+        <li><a id="clothes" href="#">Clothes</a></li>
+        
+      </div>
+      </ul>
+
+
+    <!--lay-out-->
+    
+
+
   <!-- Page Content -->
   <div class="row" style="margin-left:3in;">
     <div class="column">
@@ -83,10 +95,21 @@
       });
     }
 
-
     //redirect route to dashboard
     $("#dashboard").click(() => {
       window.location.href = `${baseUrl}home`;
+    });
+
+    $("#gadgets").click(()=>{
+      window.location.href = `${baseUrl}gadgets`;
+    });
+
+    $("#groceries").click(()=>{
+      window.location.href = `${baseUrl}groceries`;
+    });
+
+    $("#clothes").click(()=>{
+      window.location.href = `${baseUrl}clothes`;
     });
 
   });
