@@ -21,21 +21,22 @@
     <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>Register</title>
 </head>
 
 <body>
-
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <p id="error"></p>
+                    
                     <h3>Sign Up</h3>
                     <h6 style="color:whitesmoke">Please fill in this form to create an account.</h6>
                 </div>
                 <div class="card-body">
                     <form>
+                        
                         <div class="parent">
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
@@ -116,7 +117,6 @@
             // this function will add new user
             $("#sub").click(() => {
                 let errors = {};
-
                 //fields to be validate
                 let firstname = $("#firstname").val();
                 let lastname = $("#lastname").val();
@@ -126,19 +126,23 @@
                 let password = $("#password").val();
 
                 const newUser = {};
-                (isValidNames(firstname)) ? newUser["firstname"] = firstname : errors["firstname"] = "First name is not valid";
-                (isValidNames(lastname)) ? newUser["lastname"] = lastname : errors["lastname"] = "Last name is not valid";
+                (isValidNames(firstname)) ? newUser["firstname"] = firstname : errors["firstname"] = "Invalid name";
+                (isValidNames(lastname)) ? newUser["lastname"] = lastname : errors["lastname"] = "Invalid name";
                 newUser["middlename"] = $('#middlename').val();
-                (isEmailValid(email)) ? newUser["email"] = email : errors["email"] = "Email is not valid";
-                (password)?newUser["password"] = password:errors["password"]="Password should'nt be empty";
-                (age) ? newUser["age"] = age : errors["age"] = "Age should'nt be empty";
-                (role) ? newUser["role"] = role : errors["role"] = "Role should'nt be empty";
+                (isEmailValid(email)) ? newUser["email"] = email : errors["email"] = "Invalid Email";
+                (password)?newUser["password"] = password:errors["password"]="should not empty";
+                (age) ? newUser["age"] = age : errors["age"] = "should'nt be empty";
+                (role) ? newUser["role"] = role : errors["role"] = "should'nt be empty";
 
                 if (Object.keys(errors).length > 0) {
                     console.log(errors);
                     //temporary
+                   
+                    // $("#error-cont").css({"display": "block"});
+                    // $("#error-cont").empty();
                     for(let key of Object.keys(errors)){
-                        $("#error").append(`<p>${errors[key]}</p>`);
+                        $(`#${key}`).val("");
+                        $(`#${key}`)[0].placeholder = errors[key];
                     }
                 }
                 else {

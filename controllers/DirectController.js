@@ -18,4 +18,17 @@ module.exports = {
     gotToRegister(req, res){
         res.sendFile(path.join(basePath, "views/register.html"));
     },
+
+    //go to gadgets
+    gotToGadget(req, res){
+        res.sendFile(path.join(basePath, "views/gadgets.html"));
+    },
+    //go to groceries
+    gotToGroceries(req, res){
+        res.sendFile(path.join(basePath, "views/groceries.html"));
+    },
+    //go to clothes 
+    gotToClothes(req, res){
+        res.sendFile(path.join(basePath, "views/clothes.html"));
+    }
 };
