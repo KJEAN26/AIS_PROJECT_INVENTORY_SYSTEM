@@ -30,13 +30,13 @@
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    
+
                     <h3>Sign Up</h3>
                     <h6 style="color:whitesmoke">Please fill in this form to create an account.</h6>
                 </div>
                 <div class="card-body">
                     <form>
-                        
+
                         <div class="parent">
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
@@ -75,7 +75,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="number" class="form-control" id="role" placeholder="Role" required>
+                            <input type="text" class="form-control" id="age" value="Select Role:" required>
+                            <div>
+                                <select id="myList" class="form-control">
+                                    <option value="1">ADMIN</option>
+                                    <option value="2">EMPLOYER</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
@@ -130,17 +137,17 @@
                 (isValidNames(lastname)) ? newUser["lastname"] = lastname : errors["lastname"] = "Invalid name";
                 newUser["middlename"] = $('#middlename').val();
                 (isEmailValid(email)) ? newUser["email"] = email : errors["email"] = "Invalid Email";
-                (password)?newUser["password"] = password:errors["password"]="should not empty";
+                (password) ? newUser["password"] = password : errors["password"] = "should not empty";
                 (age) ? newUser["age"] = age : errors["age"] = "should'nt be empty";
                 (role) ? newUser["role"] = role : errors["role"] = "should'nt be empty";
 
                 if (Object.keys(errors).length > 0) {
                     console.log(errors);
                     //temporary
-                   
+
                     // $("#error-cont").css({"display": "block"});
                     // $("#error-cont").empty();
-                    for(let key of Object.keys(errors)){
+                    for (let key of Object.keys(errors)) {
                         $(`#${key}`).val("");
                         $(`#${key}`)[0].placeholder = errors[key];
                     }
