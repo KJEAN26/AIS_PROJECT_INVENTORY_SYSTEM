@@ -1,20 +1,22 @@
 //Import Models
 const Users = require('../models/UserModel');
 
-//getUsers, updateUser, deleteUser, addUser
+//get jwt
+const jwtwebtoken = require('jsonwebtoken');
+const accessTokenSecret = "thisisasecret!";
+
+//getUsers, updateUser, deleteUser, addUser, login
 
 module.exports = {
 
     getUsers(req, res) {
-        Users.find({},(error, users) => {
-            if (error) {
-                return res.status(500).send(error);
-            }
+        Users.find({}, (error, users) => {
+            if (error) return res.status(500).send(error);
             return res.json({ "data": users });
         });
     },
 
-
+    //
     updateUser(req, res) {
         const userId = req.params.id
         const userInfos = {
@@ -27,35 +29,43 @@ module.exports = {
             email: req.body.email,
         };
 
-        Users.findOneAndUpdate({ _id: userId }, { $set: userInfos }, {new:true},(error, user) => {
-            if (error) {
-                return res.status(500).send(error);
-            }
+        Users.findOneAndUpdate({ _id: userId }, { $set: userInfos }, { new: true }, (error, user) => {
+            if (error) return res.status(500).send(error);
             return res.json({ "last_upated_user": user });
         });
     },
 
-    
 
+    // delete user by id
     deleteUser(req, res) {
         const userId = req.params.id
         const deletedDate = new Date();
         Users.findOneAndUpdate({ _id: userId }, { $set: { deletedAt: deletedDate } }, (error, user) => {
-            if (error) {
-                return res.status(500).send(error);
-            }
+            if (error) return res.status(500).send(error);
             return res.json({ "last_deleted_user": user });
         });
     },
 
+    //add new user
     addUser(req, res) {
         const newUser = new Users(req.body);
 
         newUser.save((error, user) => {
-            if (error) {
-                return res.status(500).send(error);
-            }
+            if (error) return res.status(500).send(error);
             return res.json({ "last_inserted_user": user });
         });
-    }
+    },
+
+    //login controller
+    login(req, res) {
+        Users.findOne({ email: req.body.email, password: req.body.password },
+            (error, user) => {
+                if (error) return res.status(500).send(error);
+
+                //generate token
+                const accessToken = jwtwebtoken.sign({ user }, accessTokenSecret, { expiresIn: "12h" });
+
+                return res.json({ "user_data": user, "access_token": accessToken });
+            });
+    },
 };
