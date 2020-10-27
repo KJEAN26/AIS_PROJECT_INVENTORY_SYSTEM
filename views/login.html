@@ -22,72 +22,84 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-  <title>login</title>
+
+  <title>LogIn</title>
+
 </head>
 
 <body>
-  <div class="w3-container w3-teal">
-    <center>
-      <h1>SHOP INVENTORY SYSTEM</h1>
-    </center>
-  </div>
-  <!-- Sidebar -->
-  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
-    <h3 class="w3-bar-item">Menu</h3>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-tachometer" aria-hidden="true"><br></i>Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-product-hunt" aria-hidden="true"><br></i>Products</a>
-  </div>
   <div class="container">
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
-          <h3>Sign In</h3>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="input-group form-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-              </div>
-              <input type="text" class="form-control" placeholder="username">
+          <center>
+            <h3>Sign In</h3>
+          </center>
+          <div class="card-body">
+            <form>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="email" class="form-control" id="email" placeholder="Email">
 
-            </div>
-            <div class="input-group form-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input type="password" class="form-control" placeholder="password">
-            </div>
-            <div class="row align-items-center remember">
-              <input type="checkbox">Remember Me
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Login" class="btn float-right login_btn">
-            </div>
-          </form>
-        </div>
-        <div class="card-footer">
-          <div class="d-flex justify-content-center links">
-            Don't have an account?<a href="#">Sign Up</a>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" id="password" class="form-control" placeholder="Password">
+              </div>
+              <div class="row align-items-center remember">
+                <input type="checkbox">Remember Me
+              </div>
+              <div class="form-group">
+                <input type="button" value="Login" id="login" class="btn float-right login_btn">
+              </div>
+            </form>
           </div>
-          <div class="d-flex justify-content-center">
-            <a href="#">Forgot your password?</a>
+          <div class="card-footer">
+            <div class="d-flex justify-content-center links">
+              Don't have an account?<a href="#">Sign Up</a>
+            </div>
+            <div class="d-flex justify-content-center">
+              <a href="#">Forgot your password?</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="/static/js/main.js"></script>
-  <script>
-    $(document).ready(()=>{
-      //todos here
-      
-      
-    });
-  </script>
+    <script src="/static/js/main.js"></script>
+    <script>
+      $(document).ready(() => {
+        //get the base url
+        const baseUrl = editUrl(window.location.href);
+
+        $("#login").click(() => {
+          //get the data from the input fields
+          let user_credential = {
+            email: $("#email").val(),
+            password: $("#password").val()
+          }
+         
+          //validation of the inputed value
+          //check if the email is valid
+          //check if the password is valid
+          apiRequest("/user/login", "post", user_credential)
+            .then((resolve) => {
+              alert("Successfully login!");
+              console.log(resolve);
+              localStorage.setItem("token",resolve.access_token);
+              resetInputFields(["#email","#password"]);
+
+            }).catch((error) => {
+              console.log(error);
+            });
+        });
+
+      });
+    </script>
 </body>
 
 </html>
