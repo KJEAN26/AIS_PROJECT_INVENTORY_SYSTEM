@@ -61,6 +61,8 @@ module.exports = {
         Users.findOne({ email: req.body.email, password: req.body.password },
             (error, user) => {
                 if (error) return res.status(500).send(error);
+                //check if there is a user found
+                if(user == null) return res.status(500).json({error: true, message: "No user found"});
 
                 //generate token
                 const accessToken = jwtwebtoken.sign({ user }, accessTokenSecret, { expiresIn: "12h" });
