@@ -9,8 +9,8 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="static/css/style.css"> -->
   <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -22,15 +22,15 @@
 </head>
 
 <body>
-  <div class="w3-container w3-teal">
+  <div class="w3-container w3-teal" style="position:fixed;z-index:2;width:100%; margin-top:-50px;padding:15px;">
     <center>
       <h1>SHOP INVENTORY SYSTEM</h1>
   </div>
   </center>
   </div>
   <!-- Sidebar -->
-  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
-    <h3 class="w3-bar-item">Menu</h3>
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:12%; margin-top:30px;">
+    <h3 class="w3-bar-item mt-3">Menu</h3>
     <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
         aria-hidden="true"><br></i>Dashboard</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
@@ -40,44 +40,126 @@
     </button>
     <div class="dropdown">
       <ul>
-        <li><a id="gadgets" href="#">Gadgets</a></li>
-        <li><a id="groceries" href="#">Groceries</a></li>
-        <li><a id="clothes" href="#">Clothes</a></li>
-        
+        <li><a href="#">Gadgets</a></li>
+        <li><a href="#">Groceries</a></li>
+        <li><a href="#">Clothes</a></li>
+    </div>
+    </ul>
+  </div>
+  <!-- DashBoard -->
+  <div class="container h-100 mr-3">
+    <div class="d-flex flex-row mx-auto d-block mt-5">
+      <div class="col-sm mt-5 pr-4 col-hover">
+        <div class="card gr-1  mt-5">
+          <div class="txt text-center">
+            <h1>Top Selling Products </br>
+            </h1>
+            <p>Visual communication and problem-solving</p>
+          </div>
+          <a href="#">more</a>
+          <div class="ico-card">
+            <i class="fa fa-rebel"></i>
+          </div>
+        </div>
       </div>
-      </ul>
+      <div class="col-sm mt-5 col-hover">
+        <div class="card gr-2  mt-5">
+          <div class="txt text-center">
+            <h1>Monthly Sales </br></h1>
+            <p>How design is implemented on the web.</p>
+          </div>
+          <a href="#">more</a>
+          <div class="ico-card">
+            <i class="fa fa-codepen"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm mt-5  ml-2 col-hover">
+        <div class="card gr-3  mt-5">
+          <div class="txt text-center">
+            <h1>GROSS PROFIT</h1>
+            <p>User Interface and User Experience Design.</p>
+          </div>
+          <a href="#">more</a>
+          <div class="ico-card">
+            <i class="fa fa-empire"></i>
+          </div>
+        </div>
+      </div>
 
-
-    <!--lay-out-->
-    
-
-
-  <!-- Page Content -->
-  <div class="row" style="margin-left:3in;">
-    <div class="column">
-      <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
-        velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus
-        leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
     </div>
-
-    <div class="column">
-      <h2>Column</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
-        velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus
-        leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-    </div>
-
-
   </div>
 
+  </div>
+  </div>
+  <!-- Graph -->
+  <center>
+    <div id="chart-container"></div>
+  </center>
+  <div class="footer">
+    
+  </div>
 </body>
-
+<script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+<script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
     //gaurd
     protectedPages();
+
+  const dataSource = {
+    chart: {
+      caption: "Late arrivals by reported cause",
+      subcaption: "Last month",
+      pyaxisname: "No. of Occurrence",
+      theme: "fusion",
+      showsecondarylimits: "0",
+      showdivlinesecondaryvalue: "0",
+      plottooltext:
+        "Due to $label, late arrivals count is : <b>$dataValue</b> of the total <b>$sum</b> employees",
+      drawcrossline: "1"
+    },
+    data: [
+      {
+        label: "Traffic",
+        value: "5680"
+      },
+      {
+        label: "Family Engagement",
+        value: "1036"
+      },
+      {
+        label: "Public Transport",
+        value: "950"
+      },
+      {
+        label: "Weather",
+        value: "500"
+      },
+      {
+        label: "Emergency",
+        value: "140"
+      },
+      {
+        label: "Others",
+        value: "68"
+      }
+    ]
+  };
+
+  FusionCharts.ready(function () {
+    var myChart = new FusionCharts({
+      type: "pareto2d",
+      renderAt: "chart-container",
+      width: "100%",
+      height: "100%",
+      dataFormat: "json",
+      dataSource
+    }).render();
+  });
+
+
 
     //gets the base url
     const baseUrl = editUrl(window.location.href);
@@ -126,7 +208,7 @@
     });
 
   });
-
+  
 
 </script>
 </body>
