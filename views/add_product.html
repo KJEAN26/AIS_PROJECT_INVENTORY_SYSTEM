@@ -14,7 +14,17 @@
 
 <body>
     <h1>New Product</h1>
-    <input type="file" id="file" name="file">
+    <input type="text" id="productName" placeholder="product name"><br>
+    <input type="number" id="productPrice" placeholder="product price"><br>
+    <label>Product Catgory: </label>
+    <select id="category">
+        <option value="grocery">Grocery</option>
+        <option value="gadgets">Gadgets</option>
+        <option value="clothes">Clothes</option>
+    </select><br>
+    <input type="number" id="quantity" placeholder="quantity"><br>
+
+    <input type="file" id="file" name="file"><br>
     <input type="button" id="sub" value="Upload">
     <script src="/static/js/main.js"></script>
     <script>
@@ -25,49 +35,26 @@
             })
 
             $("#sub").click(() => {
+                const data = {
+                    formdata: formData,
+                    productName: $("#productName").val(),
+                    productPrice: $("#productPrice").val(),
+                    category: $("#category:checked").val(),
+                    quantity: $("#quantity").val()
+                };
                 var formData = new FormData();
                 formData.append("productImage", file);
+                formData.append("productName",data.productName);
 
-                $.ajax({
-                    url: "http://localhost:3000/product/upload",
-                    type: "post",
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    success: function(resolve){
-                        console.log("Im here");
-                        console.log(resolve);
-                    },
-                    error: function(error){
-                        console.log(error);
-                    }
+                
+
+                apiRequest("/product/upload","post",formData,"multipart/form-data")
+                .then((data)=>{
+                    console.log(data);
+                }).catch((error)=>{
+                    console.log(error);
                 });
 
-                // return apiRequest("/product/upload", "post",formData, { "Content-Type": "multipart/form-data" })
-                //     .then((resolve) => {
-                //         console.log(resolve);
-                //     }).catch((error) => {
-                //         let errors = {
-                //             error: true,
-                //             data: null,
-                //             message: error.message || "",
-                //         };
-                //         if (error.response) {
-                //             /*
-                //              * The request was made and the server responded with a status code that falls out of the range of 2xx
-                //              */
-                //             let { data, status, headers } = error.response;
-                //             errors.data = [data.data, status, headers];
-                //             errors.message = data.message ? data.message : error.message;
-                //         } else if (error.request) {
-                //             /*
-                //              * The request was made but no response was received
-                //              */
-                //             errors.message = "Something went wrong";
-                //         }
-                //         console.log(JSON.stringify(errors))
-                    // });
             });
         });
     </script>

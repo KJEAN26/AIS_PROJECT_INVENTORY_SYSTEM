@@ -12,7 +12,7 @@ const multer = require('multer');
 //set storage Engine
 const storage = multer.diskStorage({
     destination:  function (req, file, cb) {
-        cb(null, basePath)
+        cb(null, "Public/image")
       },
     filename: function(req, file, cb){
         cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
@@ -20,10 +20,9 @@ const storage = multer.diskStorage({
 });
 
 //initialized upload function
-// const upload = multer({
-//     storage: storage
-// }).single("productImage");
-
+const upload = multer({
+    storage: storage
+}).fields([{name:"productImage", maxCount: 1},{name:"productName", maxCount: 1},{name:"productPrice", maxCount: 1}]);
 
 
 
@@ -70,7 +69,12 @@ module.exports = {
 
     //test just temporary
     addImage(req, res){
-        return res.json(req.files);
+        // return res.json({"data":req});
+        upload(req, res, (error)=>{
+            console.log(req.files.productName);
+            if(error) return res.status(500).send(error);
+            return res.json(req.files);
+        })
     }
     
 };
