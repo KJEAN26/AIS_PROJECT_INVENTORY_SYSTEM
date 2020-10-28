@@ -9,6 +9,7 @@ const PageAuth = require('../middleware/DataAuthorization');
 
 //Home route
 Router.get('/home', PageAuth.authorizedForpage, DirectRoute.goToHome);
+Router.get('/', PageAuth.authorizedForpage, DirectRoute.goToHome);
 
 //get login page route
 Router.get('/login', DirectRoute.gotToLogin);
@@ -17,15 +18,15 @@ Router.get('/login', DirectRoute.gotToLogin);
 Router.get('/logout', PageAuth.deleteCookie, DirectRoute.gotToLogin)
 
 //Register route
-Router.get('/register', PageAuth.deleteCookie, DirectRoute.gotToRegister);
+Router.get('/register', PageAuth.authorizedForpage, DirectRoute.gotToRegister);
 
 //Gadget route
-Router.get('/gadgets', PageAuth.deleteCookie, DirectRoute.gotToGadget);
+Router.get('/gadgets', PageAuth.authorizedForpage, DirectRoute.gotToGadget);
 
 //grocery route
-Router.get('/groceries', PageAuth.deleteCookie, DirectRoute.gotToGroceries);
+Router.get('/groceries', PageAuth.authorizedForpage, DirectRoute.gotToGroceries);
 
-Router.get('/clothes', PageAuth.deleteCookie, DirectRoute.gotToClothes
+Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes
 
 );
 //export routes
