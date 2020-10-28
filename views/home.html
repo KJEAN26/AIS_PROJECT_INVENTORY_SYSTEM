@@ -39,7 +39,7 @@
       <img src="static/image/avatar.png" width="50px" class="dropdown-toggle float-right" type="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 89.5%;">
         <button class="dropdown-item" type="button">Profile</button>
         <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
@@ -232,7 +232,7 @@
 
     $("#logout").on("click", () => {
       localStorage.removeItem("token");
-      window.location.href = `${baseUrl}login`;
+      window.location.href = `${baseUrl}logout`;
     });
 
   });

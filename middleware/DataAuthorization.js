@@ -48,7 +48,7 @@ module.exports = {
     //only for logout
     deleteCookie(req, res, next){
         if(req.cookies.access_token) res.clearCookie("access_token");
-        return res.redirect("login");
+        return res.redirect('login');
     }
 };
 
