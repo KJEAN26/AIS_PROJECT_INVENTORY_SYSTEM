@@ -148,7 +148,7 @@
                     for (let key of Object.keys(errors)) {
                         console.log(key);
                         $(`#${key}`).val("");
-                        $(`#${key}`).css("border":"solid red 2px");
+                        $(`#${key}`).css({"border":"solid red 2px"});
                         $(`#${key}`)[0].placeholder = errors[key];
                     }
                 }
