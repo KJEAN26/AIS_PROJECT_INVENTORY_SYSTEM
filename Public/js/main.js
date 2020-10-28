@@ -9,13 +9,12 @@
 const baseURL = "http://localhost:3000";
 //(string url , string method , object props )
 // This is a dynamic function
-const apiRequest = (url, method, props) => {
+const apiRequest = (url, method, props, contentTypes={"Content-Type":"Application/json"}) => {
     return new Promise((resolve, reject) => {
-      
         let ajaxConfig = {
             url: `${baseURL}${url}`,
             type: method,
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
+            headers: {...{Authorization: `Bearer ${localStorage.getItem('token')}`},...contentTypes},
             success: function (response) {
                 //return the data in then clause
                 resolve(response);
@@ -28,10 +27,16 @@ const apiRequest = (url, method, props) => {
                 }
             }
         };
-
+        if(contentTypes["Content-Type"] == "multipart/form-data"){
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        
         if (method.toLowerCase() != "get") {
+            console.log(props)
             ajaxConfig["data"] = props;
         }
+        console.log(ajaxConfig);
         $.ajax(ajaxConfig);
     });
 };

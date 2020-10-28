@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--import jquery-3-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Add PRoduct</title>
+</head>
+
+<body>
+    <h1>New Product</h1>
+    <input type="file" id="file" name="file">
+    <input type="button" id="sub" value="Upload">
+    <script src="/static/js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+            var file = undefined;
+            $("#file").change((e) => {
+                file = e.target.files[0]
+            })
+
+            $("#sub").click(() => {
+                var formData = new FormData();
+                formData.append("productImage", file);
+
+                $.ajax({
+                    url: "http://localhost:3000/product/upload",
+                    type: "post",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+
+                    success: function(resolve){
+                        console.log("Im here");
+                        console.log(resolve);
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+
+                // return apiRequest("/product/upload", "post",formData, { "Content-Type": "multipart/form-data" })
+                //     .then((resolve) => {
+                //         console.log(resolve);
+                //     }).catch((error) => {
+                //         let errors = {
+                //             error: true,
+                //             data: null,
+                //             message: error.message || "",
+                //         };
+                //         if (error.response) {
+                //             /*
+                //              * The request was made and the server responded with a status code that falls out of the range of 2xx
+                //              */
+                //             let { data, status, headers } = error.response;
+                //             errors.data = [data.data, status, headers];
+                //             errors.message = data.message ? data.message : error.message;
+                //         } else if (error.request) {
+                //             /*
+                //              * The request was made but no response was received
+                //              */
+                //             errors.message = "Something went wrong";
+                //         }
+                //         console.log(JSON.stringify(errors))
+                    // });
+            });
+        });
+    </script>
+</body>
+
+</html>

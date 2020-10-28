@@ -26,8 +26,10 @@ Router.get('/gadgets', PageAuth.authorizedForpage, DirectRoute.gotToGadget);
 //grocery route
 Router.get('/groceries', PageAuth.authorizedForpage, DirectRoute.gotToGroceries);
 
-Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes
+//clothes route
+Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes);
 
-);
+//add product route
+Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProduct);
 //export routes
 module.exports = Router;
