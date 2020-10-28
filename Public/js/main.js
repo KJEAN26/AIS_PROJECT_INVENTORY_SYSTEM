@@ -9,7 +9,7 @@
 const baseURL = "http://localhost:3000";
 //(string url , string method , object props )
 // This is a dynamic function
-const apiRequest = (url, method, props, contentTypes={"Content-Type":"Application/json"}) => {
+const apiRequest = (url, method, props, contentTypes={"Content-Type":"application/json"}) => {
     return new Promise((resolve, reject) => {
         let ajaxConfig = {
             url: `${baseURL}${url}`,
@@ -22,6 +22,7 @@ const apiRequest = (url, method, props, contentTypes={"Content-Type":"Applicatio
             error: function (error) {
                 //return the data in catch clause
                 reject(error);
+                console.log(error.getAllResponseHeaders());
                 if (error.status == 403 || error.status == 401) {
                     window.location.href = `${baseURL}/login`;
                 }
@@ -33,7 +34,6 @@ const apiRequest = (url, method, props, contentTypes={"Content-Type":"Applicatio
         }
         
         if (method.toLowerCase() != "get") {
-            console.log(props)
             ajaxConfig["data"] = props;
         }
         console.log(ajaxConfig);

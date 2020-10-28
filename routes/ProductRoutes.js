@@ -1,6 +1,9 @@
 const express = require('express');
 const UserController = require('../controllers/UserController');
 const Router = express.Router();
+const multer = require('multer');
+
+const upload = multer({dest: "image/"});
 
 //Import Product controller 
 const ProductController = require('../controllers/ProductController');
@@ -18,6 +21,6 @@ Router.delete('/delete/:id',ProductController.deleteProduct);
 Router.post('/add',ProductController.addProduct);
 
 //test temporary rout for uploading image
-Router.post('/upload',ProductController.addImage);
+Router.post('/upload',upload.single("productImage"),ProductController.addImage);
 
 module.exports = Router;

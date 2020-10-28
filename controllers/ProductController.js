@@ -4,22 +4,27 @@ const Product = require("../models/ProductModel");
 const path = require('path');
 const basePath = path.dirname(__dirname);
 
+
 //use multer
 const multer = require('multer');
 
 
 //set storage Engine
 const storage = multer.diskStorage({
-    destination: `${basePath}/Public/image/`,
+    destination:  function (req, file, cb) {
+        cb(null, basePath)
+      },
     filename: function(req, file, cb){
         cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     }
 });
 
 //initialized upload function
-const upload = multer({
-    storage: storage
-}).single("productImage");
+// const upload = multer({
+//     storage: storage
+// }).single("productImage");
+
+
 
 
 module.exports = {
@@ -65,11 +70,7 @@ module.exports = {
 
     //test just temporary
     addImage(req, res){
-        upload(req, res, (error)=>{
-            console.log(req.file);
-            if(error) return res.status(500).send(error);
-            return res.json(req.file);
-        });
+        return res.json(req.files);
     }
     
 };
