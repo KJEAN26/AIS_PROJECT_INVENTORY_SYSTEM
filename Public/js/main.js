@@ -11,11 +11,11 @@ const baseURL = "http://localhost:3000";
 // This is a dynamic function
 const apiRequest = (url, method, props) => {
     return new Promise((resolve, reject) => {
-
+      
         let ajaxConfig = {
             url: `${baseURL}${url}`,
             type: method,
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
             success: function (response) {
                 //return the data in then clause
                 resolve(response);

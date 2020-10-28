@@ -22,5 +22,4 @@ Router.post("/add",userController.addUser);
 //recieve user login credentials
 Router.post('/login',userController.login);
 
-
 module.exports = Router;

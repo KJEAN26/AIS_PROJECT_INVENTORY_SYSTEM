@@ -5,9 +5,13 @@ const conn = require('./connection/connection');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 //Allow headers
 app.use(cors());
+
+//use cookie parser
+app.use(cookieParser());
 
 //set static files
 app.use('/static',express.static(path.join(__dirname,'Public')));

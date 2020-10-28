@@ -62,11 +62,11 @@ module.exports = {
             (error, user) => {
                 if (error) return res.status(500).send(error);
                 //check if there is a user found
-                if(user == null) return res.status(500).json({error: true, message: "No user found"});
+                if (user == null) return res.status(500).json({ error: true, message: "No user found" });
 
                 //generate token
                 const accessToken = jwtwebtoken.sign({ user }, accessTokenSecret, { expiresIn: "12h" });
-
+                res.cookie("access_token", accessToken, { maxAge: 60000 * 60 * 12, httpOnly: true });
                 return res.json({ "user_data": user, "access_token": accessToken });
             });
     },
