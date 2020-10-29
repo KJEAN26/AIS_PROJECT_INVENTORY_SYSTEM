@@ -25,6 +25,7 @@ module.exports = {
             });
         } else {
             res.sendStatus(401);
+            res.redirect();
         }
     }
 };
