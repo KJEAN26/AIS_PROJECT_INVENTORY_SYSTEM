@@ -11,6 +11,9 @@ const ProductController = require('../controllers/ProductController');
 //get all product route
 Router.get('/all', ProductController.getProducts);
 
+//get products by category
+Router.get('/limited/:category', ProductController.getProductsByCategory)
+
 //update product route
 Router.put('/update/:id', ProductController.updateProduct);
 

@@ -36,6 +36,13 @@ module.exports = {
             return res.json({ "data": products });
         });
     },
+    getProductsByCategory(req, res){
+        const productCategory = req.params.category;
+        Product.find({category: productCategory},(error, products)=>{
+            if(error) return res.status(500).send(error);
+            return res.json({"products_by_category":products});
+        });
+    },
 
     updateProduct(req, res) {
         const productId = req.params.id;

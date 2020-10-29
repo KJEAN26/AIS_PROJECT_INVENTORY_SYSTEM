@@ -23,6 +23,9 @@ Router.get('/register', PageAuth.authorizedForpage, DirectRoute.gotToRegister);
 //Gadget route
 Router.get('/gadgets', PageAuth.authorizedForpage, DirectRoute.gotToGadget);
 
+//stocks route
+Router.get('/stocks', DirectRoute.gotToStocks);
+
 //grocery route
 Router.get('/groceries', PageAuth.authorizedForpage, DirectRoute.gotToGroceries);
 
@@ -31,5 +34,6 @@ Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes);
 
 //add product route
 Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProduct);
+
 //export routes
 module.exports = Router;
