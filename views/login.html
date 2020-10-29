@@ -76,6 +76,7 @@
         const baseUrl = editUrl(window.location.href);
 
         $("#login").click((e) => {
+          e.preventDefault();
           //get the data from the input fields
           let errors = {};
           let user_credential = {};
