@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+        #colCard {
+            margin-left: 5px;
+            margin-top: 10%;
+            width: 100px;
+        }
+
+        #con {
+            font-size: 50px;
+            color: black;
+            margin-top: 10px;
+        }
+
+        #nav {
+            font-size: 40px;
+            margin-left: 250px;
+            margin-top: 30px;
+
+        }
+    </style>
+</head>
+
+<center>
+    <div class="container">
+        <h2 id="con">STOCK MANAGEMENT</h2>
+
+
+        <ul class="nav nav-tabs" id="nav">
+            <li><a data-toggle="tab" href="#menu1" style="color:black;background-color:skyblue;margin-left:5px;">GADGETS
+                </a></li>
+            <li><a data-toggle="tab" href="#menu2"
+                    style="background-color: tomato;color:black;margin-left:30px;">GROCERIES </a></li>
+            <li><a data-toggle="tab" href="#menu3"
+                    style="background-color:palegreen;color:black;margin-left:30px;">CLOTHES </a></li>
+        </ul>
+
+
+        <div id="menu1" class="tab-pane fade">
+            <table class="table table-bordered" id="gadgets" style="margin-top:30px;">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                  
+                </tbody>
+            </table>
+
+
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <table class="table table-bordered" id="grocery" style="margin-top:-210px;">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <table class="table table-bordered" id="clothe" style="margin-top:-215px;">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Row 1 Cell 1</td>
+                        <td>Row 1 Cell 2</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Row 2 Cell 1</td>
+                        <td>Row 2 Cell 2</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Row 3 Cell 1</td>
+                        <td>Row 3 Cell 2</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</center>
+
+
+<script src="/static/js/main.js"></script>
+<script>
+    $(document).ready(() => {
+        let grocery = "grocery";
+        let gadgets = "gadgets";
+        let clothes = "clothe";
+
+        apiRequest("/product/limited/" + grocery, "get")
+            .then((resolve) => {
+                resolve.products_by_category.forEach(product => {
+                    $(`#${grocery}`).append(` <tr>
+                        <td>${product.productName}</td>
+                        <td>${product.quantity}</td>
+                    </tr>`);
+                });
+            }).catch((error) => {
+                console.log(error);
+            });
+
+
+            apiRequest("/product/limited/" + gadgets, "get")
+            .then((resolve) => {
+                resolve.products_by_category.forEach(product => {
+                    $(`#${gadgets}`).append(` <tr>
+                        <td>${product.productName}</td>
+                        <td>${product.quantity}</td>
+                    </tr>`);
+                });
+            }).catch((error) => {
+                console.log(error);
+            });
+
+
+    });
+
+
+</script>
+</body>
+
+</html>
