@@ -33,16 +33,25 @@
 </head>
 
 <body>
-  <div class="w3-container w3-purple" style="position:fixed;z-index:2;width:100%; margin-top:-50px;padding:15px;">
-    <div class="dropdown">
+  <div class="w3-container"
+    style="position:fixed;z-index:2;width:100%;background-color:aquamarine; margin-top:-50px;padding:20px;">
+    <div class="logo">
+      <img src="static/image/shop.png" class="logo">
+    </div>
+    <div class="dropdown" style="float:right">
+      <img src="static/image/avatar.png" width="50px" class="dropdown-toggle" type="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
 
-      <img src="static/image/avatar.png" width="50px" class="dropdown-toggle float-right" type="button"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: 89.5%;">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
         <button class="dropdown-item" type="button">Profile</button>
         <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
+    </div>
+    <div class="login_dropdown">
+      <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
+      </button>
+
     </div>
     <center>
       <h1>SHOP INVENTORY SYSTEM</h1>
@@ -50,31 +59,31 @@
   </center>
   </div>
   <!-- Sidebar -->
-  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:12%; margin-top:30px;">
+  <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
     <h3 class="w3-bar-item mt-3">Menu</h3>
     <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
         aria-hidden="true"><br></i>Dashboard</a>
     <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
-    <button class="dropdown-btn"><i class="fa fa-product-hunt" aria-hidden="true"></i>Products
-      <i class="fa fa-caret-down"></i>
-    </button>
     <div class="dropdown">
-      <ul>
-        <li><a id="gadgets" href="#">Gadgets</a></li>
-        <li><a id="groceries" href="#">Groceries</a></li>
-        <li><a id="clothes" href="#">Clothes</a></li>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Products
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Gadgets</a>
+        <a class="dropdown-item" href="#">Groceries</a>
+        <a class="dropdown-item" href="#">Clothes</a>
+      </div>
     </div>
-    </ul>
   </div>
   <!-- DashBoard -->
   <div class="container h-100 mr-3">
-    <div class="d-flex flex-row mx-auto d-block mt-5">
-      <div class="col-sm mt-5 pr-4 col-hover">
+    <div class="d-flex flex-row mx-auto mt-5">
+      <div class="col-sm mt-5 col-hover">
         <div class="card gr-1  mt-5">
           <div class="txt text-center">
-            <h1>Top Selling Products </br>
-            </h1>
+            <h1>Best Seller </br></h1>
             <p>Visual communication and problem-solving</p>
           </div>
           <a href="#">more</a>
@@ -107,18 +116,11 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-
-  </div>
-  </div>
-  <!-- Graph -->
-  <center>
-    <div id="chart-container"></div>
-  </center>
-  <div class="footer">
-
+    <!-- Graph -->
+    <center>
+      <div id="chart-container"></div>
+    </center>
   </div>
 </body>
 <script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
@@ -129,9 +131,9 @@
 
     const dataSource = {
       chart: {
-        caption: "Late arrivals by reported cause",
-        subcaption: "Last month",
-        pyaxisname: "No. of Occurrence",
+        caption: "Sales Report ",
+        subcaption: "Shop Monthly Updates",
+        pyaxisname: "No. of Sales",
         theme: "fusion",
         showsecondarylimits: "0",
         showdivlinesecondaryvalue: "0",
@@ -141,29 +143,53 @@
       },
       data: [
         {
-          label: "Traffic",
+          label: "Jan.",
           value: "5680"
         },
         {
-          label: "Family Engagement",
+          label: "Feb.",
           value: "1036"
         },
         {
-          label: "Public Transport",
+          label: "Mar.",
           value: "950"
         },
         {
-          label: "Weather",
+          label: "Apr.",
           value: "500"
         },
         {
-          label: "Emergency",
+          label: "May",
           value: "140"
         },
         {
-          label: "Others",
+          label: "Jun.",
           value: "68"
-        }
+        },
+        {
+          label: "Jul.",
+          value: "68"
+        },
+        {
+          label: "Aug.",
+          value: "68"
+        },
+        {
+          label: "Sept",
+          value: "68"
+        },
+        {
+          label: "Oct",
+          value: "68"
+        },
+        {
+          label: "Nov",
+          value: "68"
+        },
+        {
+          label: "Dec",
+          value: "68"
+        },
       ]
     };
 
@@ -177,7 +203,6 @@
         dataSource
       }).render();
     });
-
 
     //test
     apiRequest("/user/all", "get")
@@ -240,5 +265,61 @@
 
 </script>
 </body>
+<!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 mt-50px">
+        <h6>About</h6>
+        <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the upcoming
+          programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code
+          wants to be simple. We will help programmers build up concepts in different programming languages that include
+          C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Categories</h6>
+        <ul class="footer-links">
+          <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+          <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+          <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+          <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
+          <li><a href="http://scanfcode.com/category/android/">Android</a></li>
+          <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="http://scanfcode.com/about/">About Us</a></li>
+          <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+          <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+          <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
+          <a href="#">Scanfcode</a>.
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </html>
