@@ -30,5 +30,11 @@ module.exports = {
     //go to clothes page
     gotToClothes(req, res){
         res.sendFile(path.join(basePath, "views/clothes.html"));
+    },
+
+    //go to add product
+    goToAddNewProduct(req, res){
+        res.sendFile(path.join(basePath,"views/add_product.html"));
     }
+
 };
