@@ -22,6 +22,8 @@ const apiRequest = (url, method, props, contentTypes="") => {
             error: function (error) {
                 //return the data in catch clause
                 reject(error);
+
+                console.log("error", error);
                 // if (error.status == 403 || error.status == 401) {
                 //     window.location.href = `${baseURL}/login`;
                 // }
@@ -65,10 +67,9 @@ function editUrl(url) {
 }
 
 //protected page
-function protectedPages(partUrl) {
-    if (!localStorage.getItem('token')) {
-        window.location.href = `${editUrl(window.location.href)}${partUrl}`;
-    }
+function protectedPages(partUrl,partUrl2) {
+    if (!localStorage.getItem('token')) return window.location.href = `${editUrl(window.location.href)}${partUrl}`;
+    return window.location.href = `${editUrl(window.location.href)}${partUrl2}`;
 }
 
 //validator function
@@ -84,6 +85,14 @@ function isValidNames(name){
 }
 
 
+//parse jwt token into json
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
 
-
+    return JSON.parse(jsonPayload);
+  };
 

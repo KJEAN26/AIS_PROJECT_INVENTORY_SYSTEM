@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--import jquery-3-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/login.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Edit Profile</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="firstname" placeholder="Firstname" required>
+        </div>
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="lastname" placeholder="Lastname" required>
+        </div>
+
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" id="middlename" placeholder="Middlename" required>
+
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" value="Gender:" readonly>
+        <div>
+            <select id="gender" class="form-control">
+                <option value="male">MALE</option>
+                <option value="female">FEMALE</option>
+                <option value="other">OTHERS</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i  class="fas fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" id="email" placeholder="Email" required>
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="number" class="form-control" id="age" placeholder="Age" required>
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" value="Select Role:" readonly>
+        <div>
+            <select id="role" class="form-control">
+                <option value="admin">ADMIN</option>
+                <option value="employee">EMPLOYER</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-key"></i></span>
+        </div>
+        <input type="password" class="form-control" id="password" placeholder="Password" required>
+    </div>
+
+    <div class="row align-items-center remember">
+        <input type="checkbox">I accept the Terms of Use and Privacy Policy.
+    </div>
+    <div class="form-group">
+        <input type="button" id="sub" value="Sign Up" class="btn float-right login_btn">
+    </div>
+    </div>
+</body>
+
+</html>

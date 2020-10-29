@@ -12,7 +12,7 @@ Router.get('/home', PageAuth.authorizedForpage, DirectRoute.goToHome);
 Router.get('/', PageAuth.authorizedForpage, DirectRoute.goToHome);
 
 //get login page route
-Router.get('/login', DirectRoute.gotToLogin);
+Router.get('/login',PageAuth.avoidLogin, DirectRoute.gotToLogin);
 
 // user logout
 Router.get('/logout', PageAuth.deleteCookie, DirectRoute.gotToLogin)
@@ -34,6 +34,7 @@ Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes);
 
 //add product route
 Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProduct);
+
 
 //export routes
 module.exports = Router;
