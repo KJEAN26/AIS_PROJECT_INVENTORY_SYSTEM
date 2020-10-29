@@ -4,7 +4,7 @@ const basePath = path.dirname(__dirname);
 
 
 module.exports = {
-    //home controller
+    //home page
     goToHome(req,res){
         res.sendFile(path.join(basePath,"views/home.html"));
     },
@@ -14,21 +14,27 @@ module.exports = {
         res.sendFile(path.join(basePath,"views/login.html"));
     },
 
-    //register controller
+    //register page
     gotToRegister(req, res){
         res.sendFile(path.join(basePath, "views/register.html"));
     },
 
-    //go to gadgets
+    //go to gadgets page
     gotToGadget(req, res){
         res.sendFile(path.join(basePath, "views/gadgets.html"));
     },
-    //go to groceries
+    //go to groceries page
     gotToGroceries(req, res){
         res.sendFile(path.join(basePath, "views/groceries.html"));
     },
-    //go to clothes 
+    //go to clothes page
     gotToClothes(req, res){
         res.sendFile(path.join(basePath, "views/clothes.html"));
+    },
+
+    //go to add product
+    goToAddNewProduct(req, res){
+        res.sendFile(path.join(basePath,"views/add_product.html"));
     }
+
 };

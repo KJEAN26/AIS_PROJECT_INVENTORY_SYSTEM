@@ -1,5 +1,30 @@
 //Import product Model
 const Product = require("../models/ProductModel");
+//get the path
+const path = require('path');
+const basePath = path.dirname(__dirname);
+
+
+//use multer
+const multer = require('multer');
+
+
+//set storage Engine
+const storage = multer.diskStorage({
+    destination:  function (req, file, cb) {
+        cb(null, "Public/image")
+      },
+    filename: function(req, file, cb){
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    }
+});
+
+//initialized upload function
+const upload = multer({
+    storage: storage
+}).fields([{name:"productImage", maxCount: 1},{name:"productName", maxCount: 1},{name:"productPrice", maxCount: 1}]);
+
+
 
 module.exports = {
 
@@ -40,5 +65,16 @@ module.exports = {
             if(error) return res.status(500).send(error); 
             return res.json({"last_added_product": product});
         });
+    },
+
+    //test just temporary
+    addImage(req, res){
+        // return res.json({"data":req});
+        upload(req, res, (error)=>{
+            console.log(req.files.productName);
+            if(error) return res.status(500).send(error);
+            return res.json(req.files);
+        })
     }
+    
 };

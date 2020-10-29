@@ -7,6 +7,7 @@
   <!-- import jquery-3 -->
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="static/css/style.css">
@@ -18,12 +19,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
@@ -44,7 +44,7 @@
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
         <button class="dropdown-item" type="button">Profile</button>
-        <button class="dropdown-item" type="button">Log Out</button>
+        <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
     </div>
     <div class="login_dropdown">
@@ -63,7 +63,7 @@
     <h3 class="w3-bar-item mt-3">Menu</h3>
     <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
         aria-hidden="true"><br></i>Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
+    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -128,8 +128,6 @@
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
-    //gaurd
-    protectedPages();
 
     const dataSource = {
       chart: {
@@ -206,6 +204,13 @@
       }).render();
     });
 
+    //test
+    apiRequest("/user/all", "get")
+      .then((resolve) => {
+        console.log(resolve);
+      }).catch((error) => {
+        console.log(error);
+      })
 
 
     //gets the base url
@@ -229,21 +234,30 @@
 
 
 
+
+
     //redirect route to dashboard
     $("#dashboard").click(() => {
       window.location.href = `${baseUrl}home`;
     });
-
+    // reirect to gadgets
     $("#gadgets").click(() => {
       window.location.href = `${baseUrl}gadgets`;
     });
 
+    // redirect to groceries
     $("#groceries").click(() => {
       window.location.href = `${baseUrl}groceries`;
     });
 
+    //redirect to clothes
     $("#clothes").click(() => {
       window.location.href = `${baseUrl}clothes`;
+    });
+
+    $("#logout").on("click", () => {
+      localStorage.removeItem("token");
+      window.location.href = `${baseUrl}logout`;
     });
 
   });

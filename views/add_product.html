@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--import jquery-3-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Add PRoduct</title>
+</head>
+
+<body>
+    <h1>New Product</h1>
+    <input type="text" id="productName" placeholder="product name"><br>
+    <input type="number" id="productPrice" placeholder="product price"><br>
+    <label>Product Catgory: </label>
+    <select id="category">
+        <option value="grocery">Grocery</option>
+        <option value="gadgets">Gadgets</option>
+        <option value="clothes">Clothes</option>
+    </select><br>
+    <input type="number" id="quantity" placeholder="quantity"><br>
+
+    <input type="file" id="file" name="file"><br>
+    <input type="button" id="sub" value="Upload">
+    <script src="/static/js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+            var file = undefined;
+            $("#file").change((e) => {
+                file = e.target.files[0]
+            })
+
+            $("#sub").click(() => {
+                const data = {
+                    formdata: formData,
+                    productName: $("#productName").val(),
+                    productPrice: $("#productPrice").val(),
+                    category: $("#category:checked").val(),
+                    quantity: $("#quantity").val()
+                };
+                var formData = new FormData();
+                formData.append("productImage", file);
+                formData.append("productName",data.productName);
+
+                
+
+                apiRequest("/product/upload","post",formData,"multipart/form-data")
+                .then((data)=>{
+                    console.log(data);
+                }).catch((error)=>{
+                    console.log(error);
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>
