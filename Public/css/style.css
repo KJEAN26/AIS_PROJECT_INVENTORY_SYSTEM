@@ -71,6 +71,14 @@
     width: 10%;
   }
   
+  .cont {
+    margin-top: 100px;
+  }
+
+  .tables {
+    margin-top: 50px;
+  }
+
   .card {
     min-height: 170px;
     margin: 0;

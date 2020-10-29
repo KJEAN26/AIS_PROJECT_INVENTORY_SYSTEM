@@ -142,6 +142,7 @@
       $('#username')[0].innerText = userinfo.firstname+" "+userinfo.lastname;
     }
 
+    //this code is responsible for the charts
     const dataSource = {
       chart: {
         caption: "Sales Report ",
@@ -217,18 +218,7 @@
       }).render();
     });
 
-    //test
-    apiRequest("/user/all", "get")
-      .then((resolve) => {
-        console.log(resolve);
-      }).catch((error) => {
-        console.log(error);
-      })
-
-
-    //gets the base url
-    const baseUrl = editUrl(window.location.href);
-
+   
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
@@ -244,44 +234,6 @@
         }
       });
     }
-
-
-
-
-    //redirect route to dashboard
-    $("#dashboard").click(() => {
-      window.location.href = `${baseUrl}home`;
-    });
-    // reirect to gadgets
-    $("#gadgets").click(() => {
-      window.location.href = `${baseUrl}gadgets`;
-    });
-
-    // redirect to groceries
-    $("#groceries").click(() => {
-      window.location.href = `${baseUrl}groceries`;
-    });
-
-    //redirect to clothes
-    $("#clothes").click(() => {
-      window.location.href = `${baseUrl}clothes`;
-    });
-
-    //update profile pic
-    $("#updateProfile").click(() => {
-      console.log("I was clicked!");
-    });
-
-    $("#logout").on("click", () => {
-      localStorage.removeItem("token");
-      window.location.href = `${baseUrl}logout`;
-    });
-
-    $("#stocks").click(() => {
-      window.location.href = `${baseUrl}stocks`;
-    });
-
-
   });
 
 
