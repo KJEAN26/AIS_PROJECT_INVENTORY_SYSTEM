@@ -35,26 +35,51 @@
             })
 
             $("#sub").click(() => {
-                const data = {
-                    formdata: formData,
-                    productName: $("#productName").val(),
-                    productPrice: $("#productPrice").val(),
-                    category: $("#category:checked").val(),
-                    quantity: $("#quantity").val()
-                };
-                var formData = new FormData();
-                console.log(data.productName);
-                formData.append("productImage", file);
-                formData.append("productName",data.productName);
+                //getting the datas inputed
+                let productName = $("#productName").val();
+                let productPrice = $("#productPrice").val();
+                let category = $("#category").val();
+                let quantity = $("#quantity").val();
 
-                
-                //this works already
-                apiRequest("/product/upload","post",formData,"multipart/form-data")
-                .then((data)=>{
-                    console.log(data);
-                }).catch((error)=>{
-                    console.log(error);
-                });
+                const data = {};
+                //takes the errors
+                let errors = {};
+
+                //validating the fields
+                (productName.length > 0) ? data["productName"] = productName : errors["productName"] = "Invalid Product name!";
+                (productPrice > 0) ? data["productPrice"] = productPrice : errors["productPrice"] = "Invalid Product price!";
+                (quantity > 0) ? data["quantity"] = quantity : errors["quantity"] = "Invalid quantity";
+                data["category"] = category;
+
+                console.log(errors);
+                if (Object.keys(errors).length > 0) {
+                    for (let key of Object.keys(errors)) {
+                        $(`#${key}`).val("");
+                        $(`#${key}`).css({ "border": "solid 2px red" });
+                        $(`#${key}`)[0].placeholder = errors[key];
+                    }
+                } else {
+                    var formData = new FormData();
+                    formData.append("productImage", file);
+
+                    //this works already
+                    apiRequest("/product/upload", "post", formData, "multipart/form-data")
+                        .then((filename) => {
+                            data["productImage"] = filename;
+                            console.log(data, filename);
+                            apiRequest("/product/add", "post", data)
+                                .then((product) => {
+                                    alert("Inserted new product");
+                                    console.log(product);
+                                }).catch((error) => {
+                                    console.log(error);
+                                });
+
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+
+                }
 
             });
         });

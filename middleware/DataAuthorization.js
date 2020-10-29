@@ -11,17 +11,16 @@ module.exports = {
 
     //only for data 
     authorized(req, res, next) {
-        console.log(req.headers);
         const authHeader = req.headers.authorization;
 
         if (authHeader) {
             const token = authHeader.split(' ')[1];
 
-            jwt.verify(token, accessTokenSecret, (err) => {
+            jwt.verify(token, accessTokenSecret, (err, user) => {
                 if (err) {
                     return res.sendStatus(403);
                 }
-
+                req.session.user = user;
                 next();
             });
         } else {
