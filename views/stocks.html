@@ -8,6 +8,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
         #colCard {
@@ -20,6 +39,7 @@
             font-size: 50px;
             color: black;
             margin-top: 10px;
+
         }
 
         #nav {
@@ -31,122 +51,222 @@
     </style>
 </head>
 
-<center>
+<body>
+    <div class="w3-container"
+        style="position:fixed;z-index:2;width:100%;background-color:aquamarine; margin-top:-23px;padding:20px;">
+        <div class="logo">
+            <img src="static/image/shop.png" class="logo">
+        </div>
+        <div class="dropdown" style="float:right">
+            <img src="static/image/avatar.png" width="50px" class="dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Profile</button>
+                <button class="dropdown-item" id="logout" type="button">Log Out</button>
+            </div>
+        </div>
+        <div class="login_dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
+            </button>
+
+        </div>
+        <center>
+            <h1>SHOP INVENTORY SYSTEM</h1>
+    </div>
+    </center>
+    </div>
+    <!-- Sidebar -->
+    <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
+        <h3 class="w3-bar-item mt-3">Menu</h3>
+        <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
+                aria-hidden="true"><br></i>Dashboard</a>
+        <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
+                aria-hidden="true"><br></i>Stocks</a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Products
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="gadget" href="#">Gadgets</a>
+                <a class="dropdown-item" id="groceries" href="#">Groceries</a>
+                <a class="dropdown-item" id="clothes" href="#">Clothes</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div class="container">
         <h2 id="con">STOCK MANAGEMENT</h2>
 
+    </div>
 
+
+
+    <CENTER>
+        <h2 style="margin-top:80px;font-size:40px;">STOCKS MANAGEMENT </h2>
+        <P>Click the Categories for Remaining Stocks</P>
+    </CENTER>
+
+    <center>
         <ul class="nav nav-tabs" id="nav">
-            <li><a data-toggle="tab" href="#menu1" style="color:black;background-color:skyblue;margin-left:5px;">GADGETS
+            <li><a data-toggle="tab" class="clickable" href="#menu1" style="color:black;background-color:skyblue;margin-left:5px;">GADGETS
                 </a></li>
-            <li><a data-toggle="tab" href="#menu2"
-                    style="background-color: tomato;color:black;margin-left:30px;">GROCERIES </a></li>
-            <li><a data-toggle="tab" href="#menu3"
-                    style="background-color:palegreen;color:black;margin-left:30px;">CLOTHES </a></li>
+            <li><a data-toggle="tab" class="clickable" href="#menu2"
+                    style="background-color: tomato;color:black;margin-left:30px;">GROCERIES
+                </a></li>
+            <li><a data-toggle="tab" class="clickable" href="#menu3"
+                    style="background-color:palegreen;color:black;margin-left:30px;">CLOTHES
+                </a></li>
         </ul>
 
 
         <div id="menu1" class="tab-pane fade">
-            <table class="table table-bordered" id="gadgets" style="margin-top:30px;">
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
+                <table class="table table-bordered" id="gadgets" style="margin-top:30px;margin-left:10%;width:900px;">
+                    <thead>
+                        <tr>
+                            <th style="background-color: black;color:white;">Product Name</th>
+                            <th style="background-color: black;color:white;">Quantity</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                  
-                </tbody>
-            </table>
+                    <tbody>
 
-
+                    </tbody>
+                </table>
+            
         </div>
+
         <div id="menu2" class="tab-pane fade">
-            <table class="table table-bordered" id="grocery" style="margin-top:-210px;">
+            <table class="table table-bordered" id="grocery" style="margin-top:-195px;margin-left:10%;width:900px;">
                 <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
+                    <tr style="width:20%;">
+                        <th style="background-color: black;color:white;">Product Name</th>
+                        <th style="background-color: black;color:white;">Quantity</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
         <div id="menu3" class="tab-pane fade">
-            <table class="table table-bordered" id="clothe" style="margin-top:-215px;">
+            <table class="table table-bordered" id="clothe" style="margin-top:-100px;width:900px;margin-left:10%;">
                 <thead>
                     <tr>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
+                        <th style="background-color: black;color:white;">Product Name</th>
+                        <th style="background-color: black;color:white;">Quantity</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Row 1 Cell 1</td>
-                        <td>Row 1 Cell 2</td>
 
-                    </tr>
-
-                    <tr>
-                        <td>Row 2 Cell 1</td>
-                        <td>Row 2 Cell 2</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Row 3 Cell 1</td>
-                        <td>Row 3 Cell 2</td>
-
-                    </tr>
                 </tbody>
             </table>
         </div>
-    </div>
-</center>
+
+    </center>
 
 
-<script src="/static/js/main.js"></script>
-<script>
-    $(document).ready(() => {
-        let grocery = "grocery";
-        let gadgets = "gadgets";
-        let clothes = "clothe";
 
-        apiRequest("/product/limited/" + grocery, "get")
-            .then((resolve) => {
-                resolve.products_by_category.forEach(product => {
-                    $(`#${grocery}`).append(` <tr>
+    <script src="/static/js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+
+
+            //for the request
+            const baseUrl = editUrl(window.location.href);
+            let grocery = "grocery";
+            let gadgets = "gadgets";
+            let clothes = "clothe";
+
+            apiRequest("/product/limited/" + grocery, "get")
+                .then((resolve) => {
+                    resolve.products_by_category.forEach(product => {
+                        $(`#${grocery}`).append(` <tr>
                         <td>${product.productName}</td>
                         <td>${product.quantity}</td>
                     </tr>`);
+                    });
+                }).catch((error) => {
+                    console.log(error);
                 });
-            }).catch((error) => {
-                console.log(error);
-            });
 
 
             apiRequest("/product/limited/" + gadgets, "get")
-            .then((resolve) => {
-                resolve.products_by_category.forEach(product => {
-                    $(`#${gadgets}`).append(` <tr>
+                .then((resolve) => {
+                    console.log($(`#${gadgets}`)[0]);
+                    resolve.products_by_category.forEach(product => {
+                        console.log(product.productName, product.quantity);
+                        $(`#${gadgets}`).append(` <tr>
                         <td>${product.productName}</td>
                         <td>${product.quantity}</td>
                     </tr>`);
+                    });
+                }).catch((error) => {
+                    console.log(error);
                 });
-            }).catch((error) => {
-                console.log(error);
+
+            apiRequest("/product/limited/" + clothes, "get")
+                .then((resolve) => {
+                    resolve.products_by_category.forEach(product => {
+                        $(`#${clothes}`).append(` <tr>
+                        <td>${product.productName}</td>
+                        <td>${product.quantity}</td>
+                    </tr>`);
+                    });
+                }).catch((error) => {
+                    console.log(error);
+                });
+
+                //for the routes
+            //redirect route to dashboard
+            $("#dashboard").click(() => {
+                window.location.href = `${baseUrl}home`;
+            });
+            // reirect to gadgets
+            $("#gadget").click(() => {
+                window.location.href = `${baseUrl}gadgets`;
+            });
+
+            // redirect to groceries
+            $("#groceries").click(() => {
+                window.location.href = `${baseUrl}groceries`;
+            });
+
+            //redirect to clothes
+            $("#clothes").click(() => {
+                window.location.href = `${baseUrl}clothes`;
+            });
+
+            $("#logout").on("click", () => {
+                localStorage.removeItem("token");
+                window.location.href = `${baseUrl}login`;
+            });
+
+            $("#stocks").click(() => {
+                window.location.href = `${baseUrl}stocks`;
             });
 
 
-    });
-
-
-</script>
+            //for the tables
+            $("#menu1").addClass("show"); 
+            $(".clickable").click((e)=>{
+                if(e.target.innerText === "GADGETS"){
+                    $("#menu1").addClass("show");   
+                }else{
+                    $("#menu1").removeClass("show");   
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

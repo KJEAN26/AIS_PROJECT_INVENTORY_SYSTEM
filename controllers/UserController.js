@@ -67,7 +67,9 @@ module.exports = {
 
                 //generate token
                 const accessToken = jwtwebtoken.sign({ user }, accessTokenSecret, { expiresIn: "12h" });
+
                 res.cookie("access_token", accessToken, { maxAge: 60000 * 60 * 12, httpOnly: true });
+                
                 return res.json({ "user_data": user, "access_token": accessToken });
             });
     },
