@@ -39,10 +39,10 @@
     </div>
 
     <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
-      <img src="static/image/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px" class="dropdown-toggle" type="button" aria-haspopup="true"
-        aria-expanded="false" alt="" dropdown-toggle>
+      <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px"
+        class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
       <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
-        data-toggle="dropdown"><strong>Admin</strong></span>
+        data-toggle="dropdown"><strong id="username">Admin</strong></span>
       <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
 
         <button class="dropdown-item" type="button">Edit Profile</button>
@@ -81,7 +81,7 @@
     </div>
   </div>
 
- 
+
 
 
   <!-- DashBoard -->
@@ -135,6 +135,12 @@
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
+
+    //get user infos and use 
+    if(localStorage.getItem('token')){
+      const userinfo = parseJwt(localStorage.getItem('token')).user;
+      $('#username')[0].innerText = userinfo.firstname+" "+userinfo.lastname;
+    }
 
     const dataSource = {
       chart: {
@@ -262,7 +268,7 @@
     });
 
     //update profile pic
-    $("#updateProfile").click(()=>{
+    $("#updateProfile").click(() => {
       console.log("I was clicked!");
     });
 
@@ -271,7 +277,7 @@
       window.location.href = `${baseUrl}logout`;
     });
 
-    $("#stocks").click(()=>{
+    $("#stocks").click(() => {
       window.location.href = `${baseUrl}stocks`;
     });
 

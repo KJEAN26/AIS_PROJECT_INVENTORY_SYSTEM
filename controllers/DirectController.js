@@ -6,7 +6,6 @@ const basePath = path.dirname(__dirname);
 module.exports = {
     //home page
     goToHome(req,res){
-        console.log(req.session.user);
         res.sendFile(path.join(basePath,"views/home.html"));
     },
     

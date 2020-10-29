@@ -48,6 +48,16 @@ module.exports = {
     deleteCookie(req, res, next){
         if(req.cookies.access_token) res.clearCookie("access_token");
         return res.redirect('login');
+    },
+    //all ready login
+    //avoids going to log in again
+    // for login route only
+    avoidLogin(req, res, next){
+        if(req.cookies.access_token) {
+            return res.redirect('home')
+        }else {
+            next();
+        }
     }
 };
 

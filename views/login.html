@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <div class="h-100" style="background-image:url(static/image/bg2.jpg);background-size:cover"> 
+  <div class="h-100" style="background-image:url(static/image/bg2.jpg);background-size:cover">
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
@@ -59,7 +59,7 @@
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-center links">
-              Don't have an account?<a href="register.html">Sign Up</a>
+              Don't have an account?<a id="register" href="register">Sign Up</a>
             </div>
             <div class="d-flex justify-content-center">
               <a href="#">Forgot your password?</a>
@@ -72,8 +72,6 @@
     <script src="/static/js/main.js"></script>
     <script>
       $(document).ready(() => {
-        
-
         //get the base url
         const baseUrl = editUrl(window.location.href);
 
@@ -89,13 +87,14 @@
           //validate password
           (isValidNames(password)) ? user_credential["password"] = password : errors["password"] = "Invalid password!";
 
+          //loops through the errors
           if (Object.keys(errors).length > 0) {
             console.log("Im here");
-            for(let key of Object.keys(errors)){
+            for (let key of Object.keys(errors)) {
               console.log(key);
               $(`#${key}`).val("");
-              $(`#${key}`).css({"border":"solid red 2px"});
-              $(`#${key}`)[0].placeholder=errors[key];
+              $(`#${key}`).css({ "border": "solid red 2px" });
+              $(`#${key}`)[0].placeholder = errors[key];
             }
           } else {
             apiRequest("/user/login", "post", user_credential)
@@ -109,12 +108,16 @@
                 window.location.href = `${baseUrl}home`;
               }).catch((error) => {
                 if (error.responseJSON) {
-                  alert(error.responseJSON.message);
+                  alert(error.responseJSON.message);//alert the error messages
                 }
               });
           }
         });
 
+        //goto register
+        $("#register").on('click', () => {
+          window.location.href = `${baseUrl}register`;
+        })
       });
     </script>
 </body>
