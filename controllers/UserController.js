@@ -10,6 +10,7 @@ const accessTokenSecret = "thisisasecret!";
 module.exports = {
 
     getUsers(req, res) {
+        console.log("This is from get all user:",req.session.user);
         Users.find({}, (error, users) => {
             if (error) return res.status(500).send(error);
             return res.json({ "data": users });

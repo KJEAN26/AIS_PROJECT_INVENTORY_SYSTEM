@@ -21,6 +21,6 @@ Router.delete('/delete/:id', ProductController.deleteProduct);
 Router.post('/add', ProductController.addProduct);
 
 //test temporary rout for uploading image
-Router.post('/upload', ProductController.addImage);
+Router.post('/upload', ProductController.uploadProductImage);
 
 module.exports = Router;

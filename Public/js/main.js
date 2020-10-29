@@ -9,7 +9,7 @@
 const baseURL = "http://localhost:3000";
 //(string url , string method , object props )
 // This is a dynamic function
-const apiRequest = (url, method, props, contentTypes) => {
+const apiRequest = (url, method, props, contentTypes="") => {
     return new Promise((resolve, reject) => {
         let ajaxConfig = {
             url: `${baseURL}${url}`,
