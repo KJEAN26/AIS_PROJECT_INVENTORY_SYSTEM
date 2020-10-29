@@ -22,9 +22,10 @@ const apiRequest = (url, method, props, contentTypes="") => {
             error: function (error) {
                 //return the data in catch clause
                 reject(error);
-                if (error.status == 403 || error.status == 401) {
-                    window.location.href = `${baseURL}/login`;
-                }
+                console.log("error", error);
+                // if (error.status == 403 || error.status == 401) {
+                //     window.location.href = `${baseURL}/login`;
+                // }
             }
         };
         if(contentTypes == "multipart/form-data"){

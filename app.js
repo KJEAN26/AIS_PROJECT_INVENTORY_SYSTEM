@@ -43,7 +43,7 @@ app.use(directRoutes);
 
 //use user routes
 const userRoutes = require('./routes/UserRoutes');
-app.use('/user',AUTH.authorized,userRoutes);
+app.use('/user',userRoutes);
 
 //use product routes
 const productRoutes = require('./routes/ProductRoutes');

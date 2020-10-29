@@ -62,6 +62,20 @@
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" value="Gender:" readonly>
+                            <div>
+                                <select id="gender" class="form-control">
+                                    <option value="male">MALE</option>
+                                    <option value="female">FEMALE</option>
+                                    <option value="other">OTHERS</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text"><i  class="fas fa-user"></i></span>
                             </div>
                             <input type="text" class="form-control" id="email" placeholder="Email" required>
@@ -76,7 +90,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" value="Select Role:" required>
+                            <input type="text" class="form-control" value="Select Role:" readonly>
                             <div>
                                 <select id="role" class="form-control">
                                     <option value="admin">ADMIN</option>
@@ -138,9 +152,11 @@
                 let password = $("#password").val();
 
                 const newUser = {};
+                //validation part
                 (isValidNames(firstname)) ? newUser["firstname"] = firstname : errors["firstname"] = "Invalid name";
                 (isValidNames(lastname)) ? newUser["lastname"] = lastname : errors["lastname"] = "Invalid name";
                 newUser["middlename"] = $('#middlename').val();
+                newUser["gender"] = $('#gender').val();
                 (isEmailValid(email)) ? newUser["email"] = email : errors["email"] = "Invalid Email";
                 (password) ? newUser["password"] = password : errors["password"] = "should not empty";
                 (age) ? newUser["age"] = age : errors["age"] = "should'nt be empty";
@@ -158,15 +174,15 @@
                         $(`#${key}`)[0].placeholder = errors[key];
                     }
                 }
-                // else {
-                //     apiRequest("/user/add", "post", newUser)
-                //         .then((resolve) => {
-                //             alert("added new user");
-                //             console.log(resolve);
-                //         }).catch((rejected) => {
-                //             console.log(rejected);
-                //         });
-                // }
+                else {
+                    apiRequest("/user/add", "post", newUser)
+                        .then((resolve) => {
+                            alert("added new user");
+                            console.log(resolve);
+                        }).catch((rejected) => {
+                            console.log(rejected);
+                        });
+                }
             });
 
 
