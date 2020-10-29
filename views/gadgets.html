@@ -9,10 +9,24 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="static/css/style.css"> -->
     <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
     <title>GADGETS</title>
 
     <style>
@@ -35,20 +49,63 @@
 </head>
 
 <body>
+    <!-- header -->
+    <div class="w3-container"
+        style="position:fixed;z-index:2;width:100%;background-color:aquamarine; margin-top:-23px;padding:20px;">
+        <div class="logo">
+            <img src="static/image/shop.png" class="logo">
+        </div>
+        <div class="dropdown" style="float:right">
+            <img src="static/image/avatar.png" width="50px" class="dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Profile</button>
+                <button class="dropdown-item" id="logout" type="button">Log Out</button>
+            </div>
+        </div>
+        <div class="login_dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
+            </button>
+
+        </div>
+        <center>
+            <h1>SHOP INVENTORY SYSTEM</h1>
+    </div>
+    </center>
+    </div>
+    <!-- Sidebar -->
+    <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
+        <h3 class="w3-bar-item mt-3">Menu</h3>
+        <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
+                aria-hidden="true"><br></i>Dashboard</a>
+        <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
+                aria-hidden="true"><br></i>Stocks</a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Products
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="gadgets" href="#">Gadgets</a>
+                <a class="dropdown-item" id="groceries" href="#">Groceries</a>
+                <a class="dropdown-item" id="clothes" href="#">Clothes</a>
+            </div>
+        </div>
+    </div>
 
     <div>
-        <img src="static/image/gadgets.jpg" alt="" id="image">
-        <div class="centered">NEWEST INVENTIONS </div>
+        <input type="text" placeholder="Search.." name="search" style="margin-top:10%;margin-left:75%;">
+          <button type="submit"><i class="fa fa-search"></i></button>
     </div>
-    <br><br>
 
     <!-- Product grid -->
-    <div id="product" class="w3-col l3 s6">
-        
-    </div>
-
+    <!-- <div class="w3-col l3 s6" style="margin-left:30%; margin-top:5%;">
 
     <div class="w3-col l3 s6">
+
         <div class="w3-container">
             <img src="static/image/acer.jpg" style="width:100%;height:200px;">
             <p>ACER<br><b> ₱25,000</b></p>
@@ -57,9 +114,10 @@
             <img src="static/image/samsung.jpg" style="width:100%;height:200px;">
             <p>SAMSUNG NOTE 9<br><b> ₱50,000</b></p>
         </div>
+
     </div>
 
-    <div class="w3-col l3 s6">
+    <div class="w3-col l3 s6" style="margin-top:5%;">
         <div class="w3-container">
             <div class="w3-display-container">
                 <img src="static/image/phantom.jpg" style="width:100%;height:200px;">
@@ -71,7 +129,7 @@
             <p>DJI PHANTOM<br><b> ₱50,000</b></p>
         </div>
         <div class="w3-container">
-            <img src="static/image/airpod.jpg" style="width:70%;height:200px;">
+            <img src="static/image/airpod.jpg" style="width:100%;height200px;">
             <p>Airpod<br><b> ₱5,000</b></p>
         </div>
     </div>
@@ -99,11 +157,130 @@
             <p>VIVO V20<br><b>₱15,000</b></p>
         </div>
     </div>
+    </div> -->
+
+    <!-- trial -->
+    <div class="container" style="margin-left:13%;margin-top:5%;">
+
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem; margin-left: 10%;margin-top:5%;">
+                    <img class="card-img-top" src="static/image/acer.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <p>SMART WATCH<br><b>₱30,000</b></p>
+                    </div>
+            
+                    <div class="card-body">
+                        <button class="card-link">UPDATE </button>
+                        <button class="card-link">DELETE</button>
+                    </div>
+            
+                    
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card" style="width: 18rem; margin-left: 10%;margin-top:5%;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                            content.</p>
+                    </div>
+            
+                    <div class="card-body">
+                        <button class="card-link">UPDATE </button>
+                        <button class="card-link">DELETE</button>
+                    </div>
+            
+                    
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card" style="width: 18rem; margin-left: 10%;margin-top:5%;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                            content.</p>
+                    </div>
+            
+                    <div class="card-body">
+                        <button class="card-link">UPDATE </button>
+                        <button class="card-link">DELETE</button>
+                    </div>
+            
+                    
+                </div>
+            </div>
+
+
+        </div>
     </div>
+
+
+    <!-- <div class="card" style="width: 18rem; margin-left: 20%;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+
+        <div class="card-body">
+            <button class="card-link">UPDATE </button>
+            <button class="card-link">DELETE</button>
+        </div>
+
+        
+    </div>
+<BR></BR>
+    
+    <div class="card" style="width: 18rem; margin-left: 20%;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+
+        <div class="card-body">
+            <button class="card-link">UPDATE </button>
+            <button class="card-link">DELETE</button>
+        </div>
+
+        
+    </div> -->
 
     <script src="/static/js/main.js"></script>
     <script>
         $(document).ready(() => {
+            const baseUrl = editUrl(window.location.href);
+
+            //redirect route to dashboard
+            $("#dashboard").click(() => {
+                window.location.href = `${baseUrl}home`;
+            });
+            // reirect to gadgets
+            $("#gadgets").click(() => {
+                window.location.href = `${baseUrl}gadgets`;
+            });
+
+            // redirect to groceries
+            $("#groceries").click(() => {
+                window.location.href = `${baseUrl}groceries`;
+            });
+
+            //redirect to clothes
+            $("#clothes").click(() => {
+                window.location.href = `${baseUrl}clothes`;
+            });
+
+            $("#logout").on("click", () => {
+                localStorage.removeItem("token");
+                window.location.href = `${baseUrl}login`;
+            });
 
             //get all the gadgets product
             apiRequest("/product/limited/gadgets", "get")

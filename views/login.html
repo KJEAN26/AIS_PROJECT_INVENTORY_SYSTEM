@@ -53,7 +53,7 @@
                 <input type="checkbox">Remember Me
               </div>
               <div class="form-group">
-                <input type="button" value="Login" id="login" class="btn float-right login_btn">
+                <button class="btn float-right login_btn" id="login">Login</button>
               </div>
             </form>
           </div>
@@ -89,9 +89,11 @@
 
           //loops through the errors
           if (Object.keys(errors).length > 0) {
+
             console.log("Im here");
             for (let key of Object.keys(errors)) {
               console.log(key);
+
               $(`#${key}`).val("");
               $(`#${key}`).css({ "border": "solid red 2px" });
               $(`#${key}`)[0].placeholder = errors[key];
@@ -101,11 +103,13 @@
               .then((resolve) => {
                 alert("Successfully login!");
                 console.log(resolve);
+                
                 localStorage.setItem("token", resolve.access_token);
                 resetInputFields(["#email", "#password"]);
-                console.log("Im here....");
+
 
                 window.location.href = `${baseUrl}home`;
+
               }).catch((error) => {
                 if (error.responseJSON) {
                   alert(error.responseJSON.message);//alert the error messages

@@ -22,6 +22,7 @@ const apiRequest = (url, method, props, contentTypes="") => {
             error: function (error) {
                 //return the data in catch clause
                 reject(error);
+
                 console.log("error", error);
                 // if (error.status == 403 || error.status == 401) {
                 //     window.location.href = `${baseURL}/login`;
