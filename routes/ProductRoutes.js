@@ -11,6 +11,9 @@ const ProductController = require('../controllers/ProductController');
 //get all product route
 Router.get('/all', ProductController.getProducts);
 
+//get products by category
+Router.get('/limited/:category', ProductController.getProductsByCategory)
+
 //update product route
 Router.put('/update/:id', ProductController.updateProduct);
 
@@ -21,6 +24,6 @@ Router.delete('/delete/:id', ProductController.deleteProduct);
 Router.post('/add', ProductController.addProduct);
 
 //test temporary rout for uploading image
-Router.post('/upload', ProductController.addImage);
+Router.post('/upload', ProductController.uploadProductImage);
 
 module.exports = Router;

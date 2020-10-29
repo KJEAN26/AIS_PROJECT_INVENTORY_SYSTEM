@@ -32,10 +32,15 @@ module.exports = {
     gotToClothes(req, res){
         res.sendFile(path.join(basePath, "views/clothes.html"));
     },
+  
+    //go to stocks
+    gotToStocks(req, res){
+        res.sendFile(path.join(basePath, "views/stocks.html"));
 
     //go to add product
     goToAddNewProduct(req, res){
         res.sendFile(path.join(basePath,"views/add_product.html"));
+
     }
 
 };

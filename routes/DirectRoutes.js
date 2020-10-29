@@ -23,6 +23,9 @@ Router.get('/register', PageAuth.authorizedForpage, DirectRoute.gotToRegister);
 //Gadget route
 Router.get('/gadgets', PageAuth.authorizedForpage, DirectRoute.gotToGadget);
 
+//stocks route
+Router.get('/stocks', DirectRoute.gotToStocks);
+
 //grocery route
 Router.get('/groceries', PageAuth.authorizedForpage, DirectRoute.gotToGroceries);
 

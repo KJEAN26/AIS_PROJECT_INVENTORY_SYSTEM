@@ -73,12 +73,16 @@
         Products
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Gadgets</a>
-        <a class="dropdown-item" href="#">Groceries</a>
-        <a class="dropdown-item" href="#">Clothes</a>
+        <a class="dropdown-item" id="gadgets" href="#">Gadgets</a>
+        <a class="dropdown-item" id="groceries" href="#">Groceries</a>
+        <a class="dropdown-item" id="clothes" href="#">Clothes</a>
       </div>
     </div>
   </div>
+
+ 
+
+
   <!-- DashBoard -->
   <div class="container h-100 mr-3">
     <div class="d-flex flex-row mx-auto mt-5">
@@ -237,7 +241,6 @@
 
 
 
-
     //redirect route to dashboard
     $("#dashboard").click(() => {
       window.location.href = `${baseUrl}home`;
@@ -266,6 +269,11 @@
       localStorage.removeItem("token");
       window.location.href = `${baseUrl}logout`;
     });
+
+    $("#stocks").click(()=>{
+      window.location.href = `${baseUrl}stocks`;
+    });
+
 
   });
 

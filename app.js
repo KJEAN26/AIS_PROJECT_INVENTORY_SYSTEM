@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const session =  require('express-session');
+
+//use session
+app.use(session({secret: "Thisisascret"}));
 
 //Allow headers
 app.use(cors());
@@ -15,6 +19,9 @@ app.use(cookieParser());
 
 //set static files
 app.use('/static',express.static(path.join(__dirname,'Public')));
+
+//authorization
+const AUTH = require('./middleware/DataAuthorization');
 
 //Parse the body
 app.use(bodyParser.urlencoded({extended: false }));
@@ -36,18 +43,18 @@ app.use(directRoutes);
 
 //use user routes
 const userRoutes = require('./routes/UserRoutes');
-app.use('/user',userRoutes);
+app.use('/user',AUTH.authorized,userRoutes);
 
 //use product routes
 const productRoutes = require('./routes/ProductRoutes');
-app.use('/product',productRoutes);
+app.use('/product',AUTH.authorized,productRoutes);
 
 //use purchase routes
 const purchaseRoutes = require("./routes/PurchaseRoutes");
-app.use('/purchase',purchaseRoutes);
+app.use('/purchase',AUTH.authorized,purchaseRoutes);
 
 //use transaction routes
 const transactionRoutes = require('./routes/TransactionRoutes');
-app.use('/transaction',transactionRoutes);
+app.use('/transaction',AUTH.authorized,transactionRoutes);
 
 
