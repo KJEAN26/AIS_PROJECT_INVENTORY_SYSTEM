@@ -96,6 +96,7 @@
                 <a href="#" id="gadget" class="btn btn-secondary" >Gadgets</a>
                 <a href="#" id="grocery" class="btn btn-secondary" >Groceries</a>
                 <a href="#" id="clothe" class="btn btn-secondary" >Clothes</a>
+                <a href="#" id="add_product" class="btn btn-secondary" >Add Product</a>
             </nav>
             <center>
                 <div class="container tables ">
@@ -140,6 +141,8 @@
         });
     }
   $(document).ready(() => { 
+    //get the base url
+    let baseUrl = editUrl(window.location.href);
       retrieveProductByCategory("gadgets");
 
       $("#gadget").click(()=>{
@@ -154,6 +157,10 @@
       $("#clothe").click(()=>{
         $("#product_stocks").empty();
           retrieveProductByCategory("clothes");
+      });
+
+      $("#add_product").click(()=>{
+        window.location.href = `${baseUrl}add-product`;
       });
    
   });
