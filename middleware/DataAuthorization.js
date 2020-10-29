@@ -58,7 +58,7 @@ module.exports = {
         if(req.cookies.access_token) {
             return res.redirect('home')
         }else {
-            next();
+            return next();
         }
     }
 };
