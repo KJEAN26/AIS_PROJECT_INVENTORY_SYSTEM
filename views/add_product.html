@@ -43,11 +43,12 @@
                     quantity: $("#quantity").val()
                 };
                 var formData = new FormData();
+                console.log(data.productName);
                 formData.append("productImage", file);
                 formData.append("productName",data.productName);
 
                 
-
+                //this works already
                 apiRequest("/product/upload","post",formData,"multipart/form-data")
                 .then((data)=>{
                     console.log(data);

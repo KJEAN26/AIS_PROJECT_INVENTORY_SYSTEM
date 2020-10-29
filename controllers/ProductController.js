@@ -71,9 +71,8 @@ module.exports = {
     addImage(req, res){
         // return res.json({"data":req});
         upload(req, res, (error)=>{
-            console.log(req.files.productName);
             if(error) return res.status(500).send(error);
-            return res.json(req.files);
+            return res.json(req.files.productImage);
         })
     }
     
