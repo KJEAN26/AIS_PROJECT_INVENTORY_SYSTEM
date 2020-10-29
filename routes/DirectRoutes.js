@@ -31,5 +31,7 @@ Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes);
 
 //add product route
 Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProduct);
+
+
 //export routes
 module.exports = Router;
