@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--import jquery-3-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Add PRoduct</title>
+</head>
+
+<body>
+    <h1>New Product</h1>
+    <input type="text" id="productName" placeholder="product name"><br>
+    <input type="number" id="productPrice" placeholder="product price"><br>
+    <label>Product Catgory: </label>
+    <select id="category">
+        <option value="grocery">Grocery</option>
+        <option value="gadgets">Gadgets</option>
+        <option value="clothes">Clothes</option>
+    </select><br>
+    <input type="number" id="quantity" placeholder="quantity"><br>
+
+    <input type="file" id="file" name="file"><br>
+    <input type="button" id="sub" value="Upload">
+    <script src="/static/js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+            var file = undefined;
+            $("#file").change((e) => {
+                file = e.target.files[0]
+            })
+
+            $("#sub").click(() => {
+                //getting the datas inputed
+                let productName = $("#productName").val();
+                let productPrice = $("#productPrice").val();
+                let category = $("#category").val();
+                let quantity = $("#quantity").val();
+
+                const data = {};
+                //takes the errors
+                let errors = {};
+
+                //validating the fields
+                (productName.length > 0) ? data["productName"] = productName : errors["productName"] = "Invalid Product name!";
+                (productPrice > 0) ? data["productPrice"] = productPrice : errors["productPrice"] = "Invalid Product price!";
+                (quantity > 0) ? data["quantity"] = quantity : errors["quantity"] = "Invalid quantity";
+                data["category"] = category;
+
+                console.log(errors);
+                if (Object.keys(errors).length > 0) {
+                    for (let key of Object.keys(errors)) {
+                        $(`#${key}`).val("");
+                        $(`#${key}`).css({ "border": "solid 2px red" });
+                        $(`#${key}`)[0].placeholder = errors[key];
+                    }
+                } else {
+                    var formData = new FormData();
+                    formData.append("productImage", file);
+
+                    //this works already
+                    apiRequest("/product/upload", "post", formData, "multipart/form-data")
+                        .then((filename) => {
+                            data["productImage"] = filename;
+                            console.log(data, filename);
+                            apiRequest("/product/add", "post", data)
+                                .then((product) => {
+                                    alert("Inserted new product");
+                                    console.log(product);
+                                }).catch((error) => {
+                                    console.log(error);
+                                });
+
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>
