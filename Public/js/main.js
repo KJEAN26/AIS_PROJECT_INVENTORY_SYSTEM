@@ -1,20 +1,59 @@
-// $(document).ready(()=>{
-//     $(window).on('unload',()=>{
-//         localStorage.removeItem("token");
-//     });
-// }
-// )
+$(document).ready(() => {
+    //gets the base url
+    const baseUrl = editUrl(window.location.href);
 
+    //Provides the name of the user in the upper right corner
+    if(localStorage.getItem('token')){
+        let token = localStorage.getItem('token');
+        let userinfo = parseJwt(token).user;
+        $("#username")[0].innerText = userinfo.firstname+" "+userinfo.lastname;
+        //change also the profile here
+    }
+
+    //redirect route to dashboard
+    $("#dashboard").click(() => {
+        window.location.href = `${baseUrl}home`;
+    });
+    // reirect to gadgets
+    $("#gadgets").click(() => {
+        window.location.href = `${baseUrl}gadgets`;
+    });
+
+    // redirect to groceries
+    $("#groceries").click(() => {
+        window.location.href = `${baseUrl}groceries`;
+    });
+
+    //redirect to clothes
+    $("#clothes").click(() => {
+        window.location.href = `${baseUrl}clothes`;
+    });
+
+    //update profile pic
+    $("#updateProfile").click(() => {
+        console.log("I was clicked!");
+    });
+
+    $("#logout").on("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = `${baseUrl}logout`;
+    });
+
+    $("#stocks").click(() => {
+        window.location.href = `${baseUrl}stocks`;
+    });
+
+});
 //ajax request goes here
 const baseURL = "http://localhost:3000";
 //(string url , string method , object props )
 // This is a dynamic function
-const apiRequest = (url, method, props, contentTypes="") => {
+const apiRequest = (url, method, props, contentTypes = "") => {
     return new Promise((resolve, reject) => {
         let ajaxConfig = {
             url: `${baseURL}${url}`,
             type: method,
-            headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             success: function (response) {
                 //return the data in then clause
                 resolve(response);
@@ -29,13 +68,13 @@ const apiRequest = (url, method, props, contentTypes="") => {
                 // }
             }
         };
-        if(contentTypes == "multipart/form-data"){
+        if (contentTypes == "multipart/form-data") {
             ajaxConfig["cache"] = false;
             ajaxConfig["processData"] = false;
             ajaxConfig["contentType"] = false;
         }
-       
-        
+
+
         if (method.toLowerCase() != "get") {
             ajaxConfig["data"] = props;
         }
@@ -67,7 +106,7 @@ function editUrl(url) {
 }
 
 //protected page
-function protectedPages(partUrl,partUrl2) {
+function protectedPages(partUrl, partUrl2) {
     if (!localStorage.getItem('token')) return window.location.href = `${editUrl(window.location.href)}${partUrl}`;
     return window.location.href = `${editUrl(window.location.href)}${partUrl2}`;
 }
@@ -80,7 +119,7 @@ function isEmailValid(email) {
 }
 
 //validate firstname, middlename, lastname
-function isValidNames(name){
+function isValidNames(name) {
     return (name.length > 1 && name.length < 100);
 }
 
@@ -90,9 +129,9 @@ function parseJwt(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
 
     return JSON.parse(jsonPayload);
-  };
+};
 
