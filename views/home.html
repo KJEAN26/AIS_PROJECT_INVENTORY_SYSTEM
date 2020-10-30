@@ -33,32 +33,24 @@
 </head>
 
 <body>
-  <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:-50px;padding:20px;">
+  <div class="w3-container" style="position:fixed;z-index:3;width:100%; margin-top:-50px;padding:20px;">
     <div class="logo">
       <img src="static/image/shop.png" class="logo">
     </div>
-
     <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
       <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px"
         class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
-      <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
-        data-toggle="dropdown"><strong id="username">Admin</strong></span>
+      <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt="" data-toggle="dropdown"><strong
+          id="username">Admin</strong></span>
       <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
 
         <button class="dropdown-item" type="button">Edit Profile</button>
         <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
     </div>
-    <!-- <div class="login_dropdown">
-      <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
-      </button>
-
-    </div> -->
     <center>
       <h1>SHOP INVENTORY SYSTEM</h1>
-  </div>
-  </center>
+    </center>
   </div>
   <!-- Sidebar -->
   <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
@@ -80,20 +72,15 @@
       </div>
     </div>
   </div>
-
-
-
-
   <!-- DashBoard -->
   <div class="container h-100 mr-3">
     <div class="d-flex flex-row mx-auto mt-5">
       <div class="col-sm mt-5 col-hover">
         <div class="card gr-1  mt-5">
           <div class="txt text-center">
-            <h1>Best Seller </br></h1>
-            <p>Visual communication and problem-solving</p>
+            <h1>Top Selling </br></h1>
+            <p>Highest selling product category.</p>
           </div>
-          <a href="#">more</a>
           <div class="ico-card">
             <i class="fa fa-rebel"></i>
           </div>
@@ -103,9 +90,8 @@
         <div class="card gr-2  mt-5">
           <div class="txt text-center">
             <h1>Monthly Sales </br></h1>
-            <p>How design is implemented on the web.</p>
+            <p>Sales trends on a monthly basis. </p>
           </div>
-          <a href="#">more</a>
           <div class="ico-card">
             <i class="fa fa-codepen"></i>
           </div>
@@ -115,9 +101,8 @@
         <div class="card gr-3  mt-5">
           <div class="txt text-center">
             <h1>GROSS PROFIT</h1>
-            <p>User Interface and User Experience Design.</p>
+            <p> The costs associated with providing its services.</p>
           </div>
-          <a href="#">more</a>
           <div class="ico-card">
             <i class="fa fa-empire"></i>
           </div>
@@ -135,66 +120,47 @@
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
+
     //this code is responsible for the charts
     const dataSource = {
       chart: {
-        caption: "Sales Report ",
-        subcaption: "Shop Monthly Updates",
+        caption: "Shop Sales Report ",
+        subcaption: "Shop Weekly Updates",
         pyaxisname: "No. of Sales",
         theme: "fusion",
         showsecondarylimits: "0",
         showdivlinesecondaryvalue: "0",
         plottooltext:
-          "Due to $label, late arrivals count is : <b>$dataValue</b> of the total <b>$sum</b> employees",
+          " $label sales report is: <b>$dataValue</b> of the total <b>$sum</b>",
         drawcrossline: "1"
       },
       data: [
         {
-          label: "Jan.",
+          label: "Mon.",
           value: "5680"
         },
         {
-          label: "Feb.",
+          label: "Tues.",
           value: "1036"
         },
         {
-          label: "Mar.",
+          label: "Wed.",
           value: "950"
         },
         {
-          label: "Apr.",
+          label: "Thurs.",
           value: "500"
         },
         {
-          label: "May",
+          label: "Fri.",
           value: "140"
         },
         {
-          label: "Jun.",
+          label: "Sat.",
           value: "68"
         },
         {
-          label: "Jul.",
-          value: "68"
-        },
-        {
-          label: "Aug.",
-          value: "68"
-        },
-        {
-          label: "Sept",
-          value: "68"
-        },
-        {
-          label: "Oct",
-          value: "68"
-        },
-        {
-          label: "Nov",
-          value: "68"
-        },
-        {
-          label: "Dec",
+          label: "Sun.",
           value: "68"
         },
       ]
@@ -238,26 +204,27 @@
     <div class="row">
       <div class="col-sm-12 col-md-6 mt-50px">
         <h6>About</h6>
-        <p class="text-justify">Shop Inventory System <i></i></p>
+        <p class="text-justify"> <a href="home.hmtl">Shop Inventory System</a> <i>integrates all of your sales & inventory data into one
+            place. Shop now for your essentials at our store anytime and anywhere!</i></p>
       </div>
 
       <div class="col-xs-6 col-md-3">
         <h6>Product Categories</h6>
         <ul class="footer-links">
-          <li><a href="http://scanfcode.com/category/c-language/"></a>Gadgets</li>
-          <li><a href="http://scanfcode.com/category/front-end-development/">Groceries</a></li>
-          <li><a href="http://scanfcode.com/category/back-end-development/">Clothes</a></li>
+          <li><a href="gadgets.html"></a>Gadgets</li>
+          <li><a href="groceries.html">Groceries</a></li>
+          <li><a href="clothes.html">Clothes</a></li>
         </ul>
       </div>
 
       <div class="col-xs-6 col-md-3">
         <h6>Quick Links</h6>
         <ul class="footer-links">
-          <li><a href="http://scanfcode.com/about/">About Us</a></li>
-          <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-          <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-          <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Contribute</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Sitemap</a></li>
         </ul>
       </div>
     </div>
