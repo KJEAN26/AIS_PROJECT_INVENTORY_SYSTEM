@@ -30,8 +30,6 @@ module.exports = {
 
     //only for html pages
     authorizedForpage(req, res, next){
-        console.log(req.cookies.access_token);
-
         if (req.cookies.access_token) {
             const token = req.cookies.access_token;
 
