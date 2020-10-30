@@ -135,13 +135,6 @@
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
-
-    //get user infos and use 
-    if(localStorage.getItem('token')){
-      const userinfo = parseJwt(localStorage.getItem('token')).user;
-      $('#username')[0].innerText = userinfo.firstname+" "+userinfo.lastname;
-    }
-
     //this code is responsible for the charts
     const dataSource = {
       chart: {
