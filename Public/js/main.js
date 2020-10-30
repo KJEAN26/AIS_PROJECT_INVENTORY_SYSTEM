@@ -1,7 +1,8 @@
 $(document).ready(() => {
     //gets the base url
     const baseUrl = editUrl(window.location.href);
-
+    $()
+        console.log("I was here!");
     //Provides the name of the user in the upper right corner
     if(localStorage.getItem('token')){
         let token = localStorage.getItem('token');
@@ -39,6 +40,7 @@ $(document).ready(() => {
         window.location.href = `${baseUrl}logout`;
     });
 
+    //return to stocks
     $("#stocks").click(() => {
         window.location.href = `${baseUrl}stocks`;
     });

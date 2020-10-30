@@ -93,7 +93,7 @@
                             <div>
                                 <select id="role" class="form-control">
                                     <option value="admin">ADMIN</option>
-                                    <option value="employee">EMPLOYER</option>
+                                    <option value="employee">EMPLOYEE</option>
                                 </select>
                             </div>
 
@@ -171,6 +171,7 @@
                         .then((resolve) => {
                             alert("added new user");
                             console.log(resolve);
+                            window.location.href = `${baseUrl}users`
                         }).catch((rejected) => {
                             console.log(rejected);
                         });
