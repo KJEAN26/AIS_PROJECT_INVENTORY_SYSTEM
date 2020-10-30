@@ -47,7 +47,7 @@ $(document).ready(() => {
 
 });
 //ajax request goes here
-const baseURL = "http://localhost:3000";
+const baseURL = `${editUrl(window.location.href).substr(0,editUrl(window.location.href).length - 1)}`;
 //(string url , string method , object props )
 // This is a dynamic function
 const apiRequest = (url, method, props, contentTypes = "") => {
