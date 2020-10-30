@@ -22,4 +22,5 @@ Router.post("/add", AUTH.authorized, userController.addUser);
 //recieve user login credentials
 Router.post('/login', userController.login);
 
+
 module.exports = Router;

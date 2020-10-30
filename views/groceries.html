@@ -6,25 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <title>Groceries</title>
 
   <style>
@@ -43,29 +43,36 @@
       color: black;
 
     }
+
+    .card-link:hover{
+            background-color:aquamarine;
+        }
+
+        .card-link{
+            background-color: black;
+            color:white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
   </style>
 </head>
 
 <body>
-  <div class="w3-container"
-    style="position:fixed;z-index:2;width:100%;background-color:aquamarine; margin-top:-23px;padding:20px;">
+  <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:-10px;padding:20px;">
     <div class="logo">
       <img src="static/image/shop.png" class="logo">
     </div>
-    <div class="dropdown" style="float:right">
-      <img src="static/image/avatar.png" width="50px" class="dropdown-toggle" type="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button">Profile</button>
+    <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
+      <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px"
+        class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
+      <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
+        data-toggle="dropdown"><strong id="username">Admin</strong></span>
+      <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
+
+        <button class="dropdown-item" type="button">Edit Profile</button>
         <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
-    </div>
-    <div class="login_dropdown">
-      <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
-      </button>
-
     </div>
     <center>
       <h1>SHOP INVENTORY SYSTEM</h1>
@@ -73,11 +80,12 @@
   </center>
   </div>
   <!-- Sidebar -->
-  <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
+  <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:60px;background-color:#33353d;">
     <h3 class="w3-bar-item mt-3">Menu</h3>
     <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
         aria-hidden="true"><br></i>Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
+    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
+        aria-hidden="true"><br></i>Stocks</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -92,101 +100,130 @@
     </div>
   </div>
 
-  
-  
 
-  <div class="w3-col l3 s6"  style="margin-left:30%;margin-top:10%;">
-    <div class="w3-container">
-      <img src="static/image/silka.png" style="width:100%;height:200px;">
-      <p>SILKA<br><b>₱50.00</b></p>
-    </div>
-    <div class="w3-container">
-      <img src="static/image/piatos.jpg" style="width:100%;height:200px;">
-      <p>PIATTOS<br><b>₱15.00</b></p>
-    </div>
-  </div>
+<!-- SEARCH -->
 
-  <div class="w3-col l3 s6" style="margin-top:10%;">
-    <div class="w3-container">
-      <div class="w3-display-container">
-        <img src="static/image/meat.jpg" style="width:100%;height:200px;">
-        <div class="w3-display-middle w3-display-hover">
-          <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+  <div>
+    <input type="text" placeholder="Search.." name="search" style="margin-top:10%;margin-left:75%;">
+      <button type="submit" style="background-color:aquamarine;color:black;"><i class="fa fa-search"></i></button>
+</div>
+
+<!-- top label -->
+<div style="margin-top: -25px;">
+  <center><h2><b>G  R  O  C  E  R  I  E  S</b></h2></center>
+</div>
+ 
+    <div class=container style="margin-left:15%; margin-top:5%;">
+
+      <div class="row">
+        <div class="col" >
+          <div class="card" style="width: 18rem;margin-top:5%;">
+            <img class="card-img-top" src="static/image/silka.png"  style="width:100%;height:200px;"  alt="Card image cap">
+            <div class="card-body">
+              <p>SILKA<br><b>₱50.00</b></p>
+            </div>
+
+            <div class="card-body">
+              <button class="card-link">UPDATE </button>
+              <button class="card-link">DELETE</button>
+            </div>
+
+
+          </div>
+
         </div>
-      </div>
-      <p>MEAT<br><b>₱150.00</b></p>
-    </div>
-    <div class="w3-container">
-      <img src="static/image/spam.jpg"style="width:100%;height:200px;">
-      <p>SPAM<br><b>₱50.00</b></p>
-    </div>
-  </div>
+        <div class="col" >
+          <div class="card" style="width: 18rem;margin-top:5%;">
+            <img class="card-img-top" src="static/image/piatos.jpg"  style="width:100%;height:200px;" alt="Card image cap">
+            <div class="card-body">
+              <p>PIATTOS<br><b>₱15.00</b></p>
+            </div>
 
-  <div class="w3-col l3 s6"  style="margin-left:30%;">
-    <div class="w3-container">
-      <img src="static/image/hotdog.jpg" style="width:100%;height:200px;">
-      <p>TENDER JUICY HOTDOG<br><b>₱40.50</b></p>
-    </div>
-    <div class="w3-container">
-      <div class="w3-display-container">
-        <img src="static/image/yogurt.jpg" style="width:100%;height:200px;">
-        <span class="w3-tag w3-display-topleft">Sale</span>
-        <div class="w3-display-middle w3-display-hover">
-          <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+            <div class="card-body">
+              <button class="card-link">UPDATE </button>
+              <button class="card-link">DELETE</button>
+            </div>
+
+
+          </div>
         </div>
-      </div>
-      <p><br><b>₱15.75</b></p>
-    </div>
-  </div>
 
-  <div class="w3-col l3 s6">
-    <div class="w3-container">
-      <img src="static/image/ganador.jpg"style="width:100%;height:200px;">
-      <p>RICE GANADOR<br><b>₱300.00</b></p>
+        <div class="col" >
+          <div class="card" style="width: 18rem; margin-top:5%;">
+            <img class="card-img-top" src="static/image/spam.jpg"   style="width:100%;height:200px;" alt="Card image cap">
+            <div class="card-body">
+              <p>SPAM<br><b>₱50.00</b></p>
+            </div>
+
+            <div class="card-body">
+              <button class="card-link">UPDATE </button>
+              <button class="card-link">DELETE</button>
+            </div>
+
+
+          </div>
+        </div>
+
+
+        <div class="col"  >
+          <div class="card" style="width: 18rem; margin-top:5%;">
+            <img class="card-img-top" src="static/image/hotdog.jpg"  style="width:100%;height:200px;"  alt="Card image cap">
+            <div class="card-body">
+              <p>TENDER JUICY HOTDOG<br><b>₱40.50</b></p>
+            </div>
+
+            <div class="card-body">
+              <button class="card-link">UPDATE </button>
+              <button class="card-link">DELETE</button>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
     </div>
-    <div class="w3-container">
-      <img src="static/image/royal.png" style="width:100%;height:200px;">
-      <p>MACARONI ROYAL<br><b>$24.99</b></p>
-    </div>
-  </div>
-  </div>
+ 
+  <br>
+
 
   <script src="/static/js/main.js"></script>
-    <script>
-        $(document).ready(() => {
-            const baseUrl = editUrl(window.location.href);
-            
-            //redirect route to dashboard
-            $("#dashboard").click(() => {
-                window.location.href = `${baseUrl}home`;
-            });
-            // reirect to gadgets
-            $("#gadgets").click(() => {
-                window.location.href = `${baseUrl}gadgets`;
-            });
+  <script>
+    $(document).ready(() => {
+      const baseUrl = editUrl(window.location.href);
 
-            // redirect to groceries
-            $("#groceries").click(() => {
-                window.location.href = `${baseUrl}groceries`;
-            });
+      //redirect route to dashboard
+      $("#dashboard").click(() => {
+        window.location.href = `${baseUrl}home`;
+      });
+      // reirect to gadgets
+      $("#gadgets").click(() => {
+        window.location.href = `${baseUrl}gadgets`;
+      });
 
-            //redirect to clothes
-            $("#clothes").click(() => {
-                window.location.href = `${baseUrl}clothes`;
-            });
+      // redirect to groceries
+      $("#groceries").click(() => {
+        window.location.href = `${baseUrl}groceries`;
+      });
 
-            $("#logout").on("click", () => {
-                localStorage.removeItem("token");
-                window.location.href = `${baseUrl}login`;
-            });
+      //redirect to clothes
+      $("#clothes").click(() => {
+        window.location.href = `${baseUrl}clothes`;
+      });
 
-            $("#stocks").click(() => {
-                window.location.href = `${baseUrl}stocks`;
-            });
+      $("#logout").on("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = `${baseUrl}login`;
+      });
+
+      $("#stocks").click(() => {
+        window.location.href = `${baseUrl}stocks`;
+      });
 
 
-        })
-    </script>
+    })
+  </script>
 </body>
 
 </html>

@@ -45,30 +45,39 @@
             color: pink;
 
         }
+
+        .card-link:hover{
+            background-color:aquamarine;
+
+        }
+
+        .card-link{
+            background-color: black;
+            color:white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+
     </style>
 </head>
 
 <body>
     <!-- header -->
-    <div class="w3-container"
-        style="position:fixed;z-index:2;width:100%;background-color:aquamarine; margin-top:-23px;padding:20px;">
+    <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:1px;padding:20px;">
         <div class="logo">
             <img src="static/image/shop.png" class="logo">
         </div>
-        <div class="dropdown" style="float:right">
-            <img src="static/image/avatar.png" width="50px" class="dropdown-toggle" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" alt="" id="dropdownMenu2">
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">Profile</button>
+        <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
+            <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px"
+                class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
+            <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
+                data-toggle="dropdown"><strong id="username">Admin</strong></span>
+            <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
+
+                <button class="dropdown-item" type="button">Edit Profile</button>
                 <button class="dropdown-item" id="logout" type="button">Log Out</button>
             </div>
-        </div>
-        <div class="login_dropdown">
-            <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
-            </button>
-
         </div>
         <center>
             <h1>SHOP INVENTORY SYSTEM</h1>
@@ -76,7 +85,7 @@
     </center>
     </div>
     <!-- Sidebar -->
-    <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
+    <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:70px;background-color:#33353d;">
         <h3 class="w3-bar-item mt-3">Menu</h3>
         <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
                 aria-hidden="true"><br></i>Dashboard</a>
@@ -96,129 +105,97 @@
         </div>
     </div>
 
+    <!-- search button -->
     <div>
-        <input type="text" placeholder="Search.." name="search" style="margin-top:10%;margin-left:75%;">
-          <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" placeholder="Search.." name="search" style="margin-top:10%;margin-left:75%;background-color:whte;">
+          <button type="submit" style="background-color: aquamarine;color:black;"><i class="fa fa-search"></i></button>
     </div>
 
-    <!-- Product grid -->
-    <!-- <div class="w3-col l3 s6" style="margin-left:30%; margin-top:5%;">
-
-    <div class="w3-col l3 s6">
-
-        <div class="w3-container">
-            <img src="static/image/acer.jpg" style="width:100%;height:200px;">
-            <p>ACER<br><b> ₱25,000</b></p>
-        </div>
-        <div class="w3-container">
-            <img src="static/image/samsung.jpg" style="width:100%;height:200px;">
-            <p>SAMSUNG NOTE 9<br><b> ₱50,000</b></p>
-        </div>
-
+    <!-- top label -->
+    <div style="margin-top: -25px;">
+        <center>
+            <h2><b>G A D G E T S </b></h2>
+        </center>
     </div>
 
-    <div class="w3-col l3 s6" style="margin-top:5%;">
-        <div class="w3-container">
-            <div class="w3-display-container">
-                <img src="static/image/phantom.jpg" style="width:100%;height:200px;">
-                <span class="w3-tag w3-display-topleft">New</span>
-                <div class="w3-display-middle w3-display-hover">
-                    <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
-                </div>
-            </div>
-            <p>DJI PHANTOM<br><b> ₱50,000</b></p>
-        </div>
-        <div class="w3-container">
-            <img src="static/image/airpod.jpg" style="width:100%;height200px;">
-            <p>Airpod<br><b> ₱5,000</b></p>
-        </div>
-    </div>
 
-    <div class="w3-col l3 s6">
-        <div class="w3-container">
-            <img src="static/image/player.jpg" style="width:100%;height:200px;">
-            <p>ROKU NETFLIX PLAYER<br><b> ₱29,000</b></p>
-        </div>
-        <div class="w3-container">
-            <div class="w3-display-container">
-                <img src="static/image/hp.jpg" style="width:100%;height:200px;">
-            </div>
-            <p>HP DESKJET<br><b>₱50,000</b></p>
-        </div>
-    </div>
-
-    <div class="w3-col l3 s6">
-        <div class="w3-container">
-            <img src="static/image/watch.jpg" style="width:100%;height:200px;">
-            <p>SMART WATCH<br><b>₱30,000</b></p>
-        </div>
-        <div class="w3-container">
-            <img src="static/image/v20.png" style="width:100%;height:200px;">
-            <p>VIVO V20<br><b>₱15,000</b></p>
-        </div>
-    </div>
-    </div> -->
-
-    <!-- trial -->
-    <div class="container" style="margin-left:13%;margin-top:5%;">
+    <!-- product grid -->
+    <div class=container style="margin-left:15%;margin-top:5%;">
 
         <div class="row">
+            <div class="col" style="height:20%;">
+                <div class="card" style="width: 18rem;margin-top:5%;">
+                    <img class="card-img-top" src="static/image/acer.jpg" style="width:100%;height:200px;"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <p>ACER<br><b> ₱25,000</b></p>
+                    </div>
+
+                    <div class="card-body">
+                        <button class="card-link">UPDATE </button>
+                        <button class="card-link">DELETE</button>
+                    </div>
+
+
+                </div>
+
+            </div>
             <div class="col">
-                <div class="card" style="width: 18rem; margin-left: 10%;margin-top:5%;">
-                    <img class="card-img-top" src="static/image/acer.jpg" alt="Card image cap">
+                <div class="card" style="width: 18rem;margin-top:5%;">
+                    <img class="card-img-top" src="static/image/watch.jpg" style="width:100%;height:200px;"
+                        alt="Card image cap">
                     <div class="card-body">
                         <p>SMART WATCH<br><b>₱30,000</b></p>
                     </div>
-            
-                    <div class="card-body">
-                        <button class="card-link">UPDATE </button>
-                        <button class="card-link">DELETE</button>
-                    </div>
-            
-                    
-                </div>
 
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem; margin-left: 10%;margin-top:5%;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                            content.</p>
-                    </div>
-            
                     <div class="card-body">
                         <button class="card-link">UPDATE </button>
                         <button class="card-link">DELETE</button>
                     </div>
-            
-                    
+
+
                 </div>
             </div>
 
             <div class="col">
-                <div class="card" style="width: 18rem; margin-left: 10%;margin-top:5%;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card" style="width: 18rem; margin-top:5%;">
+                    <img class="card-img-top" src="static/image/player.jpg" style="width:100%;height:200px;"
+                        alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                            content.</p>
+                        <p>ROKU NETFLIX PLAYER<br><b> ₱29,000</b></p>
                     </div>
-            
+
                     <div class="card-body">
                         <button class="card-link">UPDATE </button>
                         <button class="card-link">DELETE</button>
                     </div>
-            
-                    
+
+
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="card" style="width: 18rem; margin-top:5%;">
+                    <img class="card-img-top" src="static/image/hp.jpg" style="width:100%;height:200px;"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <p>HP DESKJET<br><b>₱50,000</b></p>
+                    </div>
+
+                    <div class="card-body">
+                        <button class="card-link">UPDATE </button>
+                        <button class="card-link">DELETE</button>
+                    </div>
+
+
                 </div>
             </div>
 
 
         </div>
     </div>
-
+    <br>
 
     <!-- <div class="card" style="width: 18rem; margin-left: 20%;">
         <img class="card-img-top" src="..." alt="Card image cap">
@@ -300,4 +277,5 @@
         });
     </script>
 </body>
+
 </html>
