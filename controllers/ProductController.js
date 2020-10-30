@@ -77,7 +77,6 @@ module.exports = {
     //this route will upload product images
     uploadProductImage(req, res){
         upload(req, res, (error)=>{
-            console.log(req.user);
             if(error) return res.status(500).send(error);
             return res.json(req.file.filename);
         })
