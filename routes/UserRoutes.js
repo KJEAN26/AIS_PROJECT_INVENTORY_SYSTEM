@@ -17,7 +17,7 @@ Router.put("/update_user/:id", AUTH.authorized, userController.updateUser);
 Router.delete("/delete/:id", AUTH.authorized, UserController.deleteUser);
 
 //add user
-Router.post("/add", AUTH.authorized, userController.addUser);
+Router.post("/add",AUTH.authorized, userController.addUser);
 
 //recieve user login credentials
 Router.post('/login', userController.login);

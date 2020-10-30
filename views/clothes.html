@@ -203,36 +203,7 @@
     <script src="/static/js/main.js"></script>
     <script>
       $(document).ready(() => {
-        const baseUrl = editUrl(window.location.href);
-
-        //redirect route to dashboard
-        $("#dashboard").click(() => {
-          window.location.href = `${baseUrl}home`;
-        });
-        // reirect to gadgets
-        $("#gadgets").click(() => {
-          window.location.href = `${baseUrl}gadgets`;
-        });
-
-        // redirect to groceries
-        $("#groceries").click(() => {
-          window.location.href = `${baseUrl}groceries`;
-        });
-
-        //redirect to clothes
-        $("#clothes").click(() => {
-          window.location.href = `${baseUrl}clothes`;
-        });
-
-        $("#logout").on("click", () => {
-          localStorage.removeItem("token");
-          window.location.href = `${baseUrl}login`;
-        });
-
-        $("#stocks").click(() => {
-          window.location.href = `${baseUrl}stocks`;
-        });
-
+       // todos here
 
       })
     </script>

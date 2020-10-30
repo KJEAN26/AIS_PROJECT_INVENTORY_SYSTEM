@@ -1,6 +1,10 @@
 //Import Models
 const Users = require('../models/UserModel');
 
+//import bycrypt
+const bycrypt = require('bcrypt');
+const salt = 10;
+
 //get jwt
 const jwtwebtoken = require('jsonwebtoken');
 const accessTokenSecret = "thisisasecret!";
@@ -26,9 +30,13 @@ module.exports = {
             middlename: req.body.middlename,
             password: req.body.password,
             age: req.body.age,
-            roleId: req.body.roleId,
+            role: req.body.role,
             email: req.body.email,
+            gender: req.body.gender
         };
+        if(req.body.password){
+            userInfos["password"] = bycrypt.hashSync(req.body.password, salt);
+        }
 
         Users.findOneAndUpdate({ _id: userId }, { $set: userInfos }, { new: true }, (error, user) => {
             if (error) return res.status(500).send(error);
@@ -49,7 +57,18 @@ module.exports = {
 
     //add new user
     addUser(req, res) {
-        const newUser = new Users(req.body);
+        const userInfos = {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            middlename: req.body.middlename,
+            age: req.body.age,
+            role: req.body.role,
+            email: req.body.email,
+            gender: req.body.gender
+        };
+        userInfos["password"] = bycrypt.hashSync(req.body.password, salt);
+
+        const newUser = new Users(userInfos);
 
         newUser.save((error, user) => {
             if (error) return res.status(500).send(error);
@@ -59,11 +78,15 @@ module.exports = {
 
     //login controller
     login(req, res) {
-        Users.findOne({ email: req.body.email, password: req.body.password },
+        Users.findOne({ email: req.body.email},
             (error, user) => {
                 if (error) return res.status(500).send(error);
-                //check if there is a user found
-                if (user == null) return res.status(500).json({ error: true, message: "Email and password doesn't match" });
+                //check if the email match
+                if (user == null) return res.status(500).json({ error: true, 
+                    fieldname:"email",message: "Email doesn't match" });
+                //check if the password match
+                if(!bycrypt.compareSync(req.body.password, user.password)) return res.status(500).json({ error: true, 
+                    fieldname: "password",message: "Password doesn't match" });
 
                 //generate token
                 const accessToken = jwtwebtoken.sign({ user }, accessTokenSecret, { expiresIn: "12h" });

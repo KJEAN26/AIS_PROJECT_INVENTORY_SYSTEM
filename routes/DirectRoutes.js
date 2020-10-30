@@ -35,6 +35,9 @@ Router.get('/clothes', PageAuth.authorizedForpage, DirectRoute.gotToClothes);
 //add product route
 Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProduct);
 
+//temporary route
+//to users
+Router.get('/users',PageAuth.authorizedForpage, DirectRoute.gotoUsers);
 
 //export routes
 module.exports = Router;

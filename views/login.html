@@ -76,6 +76,7 @@
         const baseUrl = editUrl(window.location.href);
 
         $("#login").click((e) => {
+          e.preventDefault();
           //get the data from the input fields
           e.preventDefault();
           let errors = {};
@@ -100,11 +101,12 @@
               $(`#${key}`)[0].placeholder = errors[key];
             }
           } else {
+            $("#login")[0].innerText = "Logging in...";
             apiRequest("/user/login", "post", user_credential)
               .then((resolve) => {
                 alert("Successfully login!");
                 console.log(resolve);
-                
+
                 localStorage.setItem("token", resolve.access_token);
                 resetInputFields(["#email", "#password"]);
 
@@ -112,8 +114,12 @@
                 window.location.href = `${baseUrl}home`;
 
               }).catch((error) => {
+                $("#login")[0].innerText = "Login";
                 if (error.responseJSON) {
                   alert(error.responseJSON.message);//alert the error messages
+                  $(`#${error.responseJSON.fieldname}`).val("");
+                  $(`#${error.responseJSON.fieldname}`).css({ "border": "solid red 2px" });
+                  $(`#${error.responseJSON.fieldname}`)[0].placeholder = error.responseJSON.message;
                 }
               });
           }

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="static/css/register.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <!--Bootsrap 4 CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -94,7 +93,7 @@
                             <div>
                                 <select id="role" class="form-control">
                                     <option value="admin">ADMIN</option>
-                                    <option value="employee">EMPLOYER</option>
+                                    <option value="employee">EMPLOYEE</option>
                                 </select>
                             </div>
 
@@ -172,6 +171,7 @@
                         .then((resolve) => {
                             alert("added new user");
                             console.log(resolve);
+                            window.location.href = `${baseUrl}users`
                         }).catch((rejected) => {
                             console.log(rejected);
                         });

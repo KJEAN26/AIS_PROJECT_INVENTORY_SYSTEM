@@ -7,7 +7,7 @@
 }
 
 .logo {
-  margin-left:130px;
+  margin-left:110px;
   width:100px;
   position:absolute;
   margin-top: -6px;
@@ -71,6 +71,14 @@
     width: 10%;
   }
   
+  .cont {
+    margin-top: 100px;
+  }
+
+  .tables {
+    margin-top: 50px;
+  }
+
   .card {
     min-height: 170px;
     margin: 0;
