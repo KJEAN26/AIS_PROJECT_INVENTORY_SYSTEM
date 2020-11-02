@@ -122,13 +122,18 @@
             const baseUrl = editUrl(window.location.href);
             //supply the needed information
             const User = parseJwt(localStorage.getItem('token'));
-            console.log(User.user);
-            $("#firstname").val(User.user.firstname);
-            $("#lastname").val(User.user.lastname);
-            $("#email").val(User.user.email);
-            $("#age").val(User.user.age);
-            $("#role option:checked").val(User.user.role);
-            $("#password").val();
+            apiRequest(`/user/${User.user._id}`, "get").then((user) => {
+                console.log(user);
+                $("#firstname").val(user.user.firstname);
+                $("#lastname").val(user.user.lastname);
+                $("#email").val(user.user.email);
+                $("#age").val(user.user.age);
+                $("#role").val(user.user.role);
+                $("#password").val();
+
+            }).catch((error) => {
+                console.log(error);
+            });
 
             //executes when the user clicks submit
             // this function will add new user
@@ -139,7 +144,7 @@
                 let lastname = $("#lastname").val();
                 let email = $("#email").val();
                 let age = $("#age").val();
-                let role = $("#role option:checked").val();
+                let role = $("#role").val();
                 let password = $("#password").val();
 
                 const editedUser = {};
@@ -151,7 +156,7 @@
                 (isEmailValid(email)) ? editedUser["email"] = email : errors["email"] = "Invalid Email";
                 editedUser["password"] = password;
                 (age) ? editedUser["age"] = age : errors["age"] = "should'nt be empty";
-                (role) ? editedUser["role"] = role : errors["role"] = "should'nt be empty";
+                editedUser["role"] = role;
 
                 console.log(editedUser);
                 if (Object.keys(errors).length > 0) {

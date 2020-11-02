@@ -57,4 +57,8 @@ app.use('/purchase',AUTH.authorized,purchaseRoutes);
 const transactionRoutes = require('./routes/TransactionRoutes');
 app.use('/transaction',AUTH.authorized,transactionRoutes);
 
+//handle 404 pages
+app.use((req, res, next)=>{
+    return res.sendFile(path.join(__dirname,"/views/forbbids/404.html"));
+})
 

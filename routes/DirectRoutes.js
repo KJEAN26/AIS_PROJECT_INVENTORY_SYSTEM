@@ -37,11 +37,16 @@ Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProd
 
 //temporary route
 //to users
-Router.get('/users',PageAuth.authorizedForpage, DirectRoute.gotoUsers);
+Router.get('/users',PageAuth.authorizedForpage,PageAuth.adminOnly , DirectRoute.gotoUsers);
 //edit user
 Router.get('/edit-user',PageAuth.authorizedForpage, DirectRoute.gotoEditUser);
 //change profile
 Router.get('/change-profile', PageAuth.authorizedForpage, DirectRoute.changeProfile);
+
+
+
+//error routes
+Router.get('/unauthorized', PageAuth.authorizedForpage, DirectRoute.unauthorized);
 
 //export routes
 module.exports = Router;

@@ -3,7 +3,8 @@ const accessTokenSecret = "thisisasecret!";
 const path = require('path');
 const basePath = path.dirname(__dirname);
 
-
+// //Get the users model
+// const User = require('../models/UserModel');
 
 //exports the authentication
 module.exports = {
@@ -48,6 +49,12 @@ module.exports = {
     deleteCookie(req, res, next){
         if(req.cookies.access_token) res.clearCookie("access_token");
         return res.redirect('login');
+    },
+
+    //temporary
+    adminOnly(req, res, next){
+        if(req.session.user.user.role == "employee") return res.redirect("unauthorized");
+        next(); 
     },
     //all ready login
     //avoids going to log in again
