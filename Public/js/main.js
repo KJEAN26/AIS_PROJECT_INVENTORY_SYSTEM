@@ -1,20 +1,31 @@
 $(document).ready(() => {
     //gets the base url
     const baseUrl = editUrl(window.location.href);
-    $()
-        console.log("I was here!");
+    console.log("I was here!");
     //Provides the name of the user in the upper right corner
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
         let token = localStorage.getItem('token');
         let userinfo = parseJwt(token).user;
-        $("#username")[0].innerText = userinfo.firstname+" "+userinfo.lastname;
-        //change also the profile here
+        apiRequest(`/user/${userinfo._id}`, "get")
+            .then((resolve) => {
+                $("#username")[0].innerText = resolve.user.firstname + " " + resolve.user.lastname;
+                //change also the profile here
+                $("#updateProfile").attr('src',`static/image/user/${resolve.user.profilepic}`);
+            }).catch((rejected) => {
+                console.log(rejected);
+            })
     }
 
     //redirect route to dashboard
     $("#dashboard").click(() => {
         window.location.href = `${baseUrl}home`;
     });
+    //edit profile
+    $("#editProfile").click(() => {
+        console.log("I was clicked");
+        window.location.href = `${baseUrl}edit-user`;
+    });
+
     // reirect to gadgets
     $("#gadgets").click(() => {
         window.location.href = `${baseUrl}gadgets`;
@@ -32,7 +43,12 @@ $(document).ready(() => {
 
     //update profile pic
     $("#updateProfile").click(() => {
-        console.log("I was clicked!");
+        window.location.href = `${baseUrl}change-profile`;
+    });
+
+    //got to user mangement
+    $("#users").click(()=>{
+        window.location.href = `${baseUrl}users`;
     });
 
     $("#logout").on("click", () => {
@@ -45,9 +61,19 @@ $(document).ready(() => {
         window.location.href = `${baseUrl}stocks`;
     });
 
+    $(".update").click((e)=>{
+        console.log(e);
+    });
+
+    $(".delete").click((e)=>{
+        console.log(e);
+    });
 });
+
+
+
 //ajax request goes here
-const baseURL = `${editUrl(window.location.href).substr(0,editUrl(window.location.href).length - 1)}`;
+const baseURL = `${editUrl(window.location.href).substr(0, editUrl(window.location.href).length - 1)}`;
 //(string url , string method , object props )
 // This is a dynamic function
 const apiRequest = (url, method, props, contentTypes = "") => {
@@ -63,14 +89,10 @@ const apiRequest = (url, method, props, contentTypes = "") => {
             error: function (error) {
                 //return the data in catch clause
                 reject(error);
-
-                console.log("error", error);
-                // if (error.status == 403 || error.status == 401) {
-                //     window.location.href = `${baseURL}/login`;
-                // }
             }
         };
         if (contentTypes == "multipart/form-data") {
+            console.log("i was here");
             ajaxConfig["cache"] = false;
             ajaxConfig["processData"] = false;
             ajaxConfig["contentType"] = false;
@@ -80,11 +102,36 @@ const apiRequest = (url, method, props, contentTypes = "") => {
         if (method.toLowerCase() != "get") {
             ajaxConfig["data"] = props;
         }
+
         console.log(ajaxConfig);
         $.ajax(ajaxConfig);
     });
 };
 
+//retriveproduct by category
+const retrieveProductByCategory = (category) => {
+    apiRequest(`/product/limited/${category}`, "get").then((products) => {
+        $("#products").empty();
+        products.products_by_category.forEach(product => {
+            console.log(product);
+            if (!product.deletedAt) {
+                $("#products").append(`<div class="card" style="width: 15rem; margin-left: 40px; margin-top: 30px;">
+                    <input type="hidden" value="${product._id}" id="productId">
+                <img src="static/image/products/${product.productImage}" class="productImage card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${product.productName}</h5>
+                    <p class="card-text">Price: Php ${product.productPrice}</p>
+                </div>
+                <button class="btn btn-primary text-center update">Update</button>
+                <button class="btn btn-danger text-center delete">Delete</button>
+            </div>
+            `);
+            }
+        });
+    }).catch((error) => {
+        console.log(error);
+    });
+}
 
 
 //helper functions 
@@ -107,11 +154,6 @@ function editUrl(url) {
     return newUrl;
 }
 
-//protected page
-function protectedPages(partUrl, partUrl2) {
-    if (!localStorage.getItem('token')) return window.location.href = `${editUrl(window.location.href)}${partUrl}`;
-    return window.location.href = `${editUrl(window.location.href)}${partUrl2}`;
-}
 
 //validator function
 //validate email

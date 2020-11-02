@@ -120,6 +120,8 @@
                   $(`#${error.responseJSON.fieldname}`).val("");
                   $(`#${error.responseJSON.fieldname}`).css({ "border": "solid red 2px" });
                   $(`#${error.responseJSON.fieldname}`)[0].placeholder = error.responseJSON.message;
+                }else{
+                  alert("Something went wrong!");
                 }
               });
           }

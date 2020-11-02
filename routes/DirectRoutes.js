@@ -38,6 +38,10 @@ Router.get('/add-product',PageAuth.authorizedForpage, DirectRoute.goToAddNewProd
 //temporary route
 //to users
 Router.get('/users',PageAuth.authorizedForpage, DirectRoute.gotoUsers);
+//edit user
+Router.get('/edit-user',PageAuth.authorizedForpage, DirectRoute.gotoEditUser);
+//change profile
+Router.get('/change-profile', PageAuth.authorizedForpage, DirectRoute.changeProfile);
 
 //export routes
 module.exports = Router;

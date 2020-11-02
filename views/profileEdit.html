@@ -90,21 +90,12 @@
     <!-- content -->
     <div class="container h-100 mr-3">
         <div class="d-flex flex-row mx-auto mt-5">
-            <div class="container cont text-center">
-                <!-- search bar -->
-                <button type="button" class="btn btn-secondary float-right"><i class="fa fa-search"></i></button>
-                <div class="search float-right">
-                    <input type="text" class="form-control" placeholder="Search.." name="search">
-                </div>
-                <div class="container">
-                    <center>
-                        <h2><b>G A D G E T S </b></h2>
-                    </center>
-                </div>
-                <div class=" d-flex flex-wrap justify-content-start" id="products">
-                    <div>
-                        <span><strong>Retrieving the datas ...</strong></span>
-                    </div>
+            <div id="chart-container" class="text-center">
+                <h1>Change Profile Picture</h1>
+                <input type="file" name="" id="file">
+                <button class="btn btn-secondary" id="sub">Save</button>
+                <div id="preview">
+
                 </div>
             </div>
         </div>
@@ -113,13 +104,32 @@
     <script src="/static/js/main.js"></script>
     <script>
         $(document).ready(() => {
-            //get the base url
-            let baseUrl = editUrl(window.location.href);
-            retrieveProductByCategory("gadgets");
+            var file = undefined;
+            $("#file").change((e) => {
+                file = e.target.files[0];
+                let read = new FileReader();
 
+                read.onload = (e)=>{
+                    $("#preview").empty();
+                    $("#preview").append(`<img src='${e.target.result}' style='width:400px; height:400px'>`);
+                }
+                read.readAsDataURL(file);
+            })
+            
+            $("#sub").click(() => {
+                    var formData = new FormData();
+                    formData.append("profilepic", file);
+                 
+                    const user = parseJwt(localStorage.getItem('token')).user;
+                    apiRequest(`/user/profile/${user._id}`, "post", formData, "multipart/form-data")
+                        .then((useimage) => {
+                            alert("successfully change image");
+                            window.location.href = `${editUrl(window.location.href)}home`;
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+                })
         });
-
-
     </script>
 </body>
 <!-- Site footer -->

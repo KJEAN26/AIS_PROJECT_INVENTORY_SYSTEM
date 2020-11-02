@@ -2,214 +2,174 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import jquery-3 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title id="title">Gadgets</title>
+
 </head>
 
 <body>
-  <!DOCTYPE html>
-  <html lang="en">
+    <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:-50px;padding:20px;">
+        <div class="logo">
+            <img src="static/image/shop.png" class="logo">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="static/css/style.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <title>GADGETS</title>
-
-    <style>
-      #image {
-        width: 100%;
-        height: 500px;
-      }
-
-      .centered {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        background: blACK;
-        color: PINK;
-
-      }
-      .card-link:hover{
-            background-color:aquamarine;
-        }
-
-        .card-link{
-            background-color: black;
-            color:white;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-    </style>
-  </head>
-
-  <body>
-    <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:-10px;padding:20px;">
-      <div class="logo">
-        <img src="static/image/shop.png" class="logo">
-      </div>
-  
-      <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
-        <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px"
-          class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
-        <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
-          data-toggle="dropdown"><strong id="username">Admin</strong></span>
-        <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
-  
-          <button class="dropdown-item" type="button">Edit Profile</button>
-          <button class="dropdown-item" id="logout" type="button">Log Out</button>
         </div>
-      </div>
-    <center>
-      <h1>SHOP INVENTORY SYSTEM</h1>
-  </div>
-  </center>
-  </div>
-  <!-- Sidebar -->
-  <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:60px;background-color:#33353d;">
-    <h3 class="w3-bar-item mt-3">Menu</h3>
-    <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
-        aria-hidden="true"><br></i>Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o" aria-hidden="true"><br></i>Stocks</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Products
+
+        <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
+            <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px" height="50px"
+                class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
+            <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
+                data-toggle="dropdown"><strong id="username">Admin</strong></span>
+            <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
+
+                <button class="dropdown-item" id="editProfile" type="button">Edit Profile</button>
+                <button class="dropdown-item" id="logout" type="button">Log Out</button>
+            </div>
+        </div>
+        <!-- <div class="login_dropdown">
+      <button class="btn btn-secondary dropdown-toggle btn-sm float-right mt-3 mr-2" type="button" id="Log In"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log In
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" id="gadgets" href="#">Gadgets</a>
-        <a class="dropdown-item" id="groceries" href="#">Groceries</a>
-        <a class="dropdown-item" id="clothes" href="#">Clothes</a>
-      </div>
+
+    </div> -->
+        <center>
+            <h1>SHOP INVENTORY SYSTEM</h1>
     </div>
-  </div>
-
-
-
-    
-   
-
-    
-    <!-- search button -->
-    <div>
-      <input type="text" placeholder="Search.." name="search" style="margin-top:10%;margin-left:75%;">
-        <button type="submit" style="background-color:aquamarine;color:black;"><i class="fa fa-search"></i></button>
-  </div>
-
-
-  <!-- top label -->
-  <div style="margin-top: -25px;">
-    <center><h2><b>C L O T H E S </b></h2></center>
-  </div>
-
-   <!-- product grid -->
-   <div class=container style="margin-left:15%;margin-top:5%;">
-
-    <div class="row">
-        <div class="col" style="height:20%;">
-            <div class="card" style="width: 18rem;margin-top:5%;">
-                <img class="card-img-top" src="static/image/shorts.jpg"  style="width:100%;height:200px;" alt="Card image cap">
-                <div class="card-body">
-                  <p>MOUNTAIN BIKE TRAIL SHORT<br><b>₱150.00</b></p>
-                </div>
-
-                <div class="card-body">
-                    <button class="card-link">UPDATE </button>
-                    <button class="card-link">DELETE</button>
-                </div>
-
-
-            </div>
-
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;margin-top:5%;">
-                <img class="card-img-top" src="static/image/jacket.jpg"   style="width:100%;height:200px;" alt="Card image cap">
-                <div class="card-body">
-                  <p>HELLO KITTY JACKETS<br><b>₱180.00</b></p>
-                </div>
-
-                <div class="card-body">
-                    <button class="card-link">UPDATE </button>
-                    <button class="card-link">DELETE</button>
-                </div>
-
-
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card" style="width: 18rem; margin-top:5%;">
-                <img class="card-img-top" src="static/image/girlsShort.jpg"   style="width:100%;height:200px;"alt="Card image cap">
-                <div class="card-body">
-                  <p>WOMEN'S SHORT<br><b>₱100.00</b></p>
-                </div>
-
-                <div class="card-body">
-                    <button class="card-link">UPDATE </button>
-                    <button class="card-link">DELETE</button>
-                </div>
-
-
-            </div>
-        </div>
-
-
-        <div class="col">
-            <div class="card" style="width: 18rem; margin-top:5%;">
-                <img class="card-img-top" src="static/image/dress.jpg"  style="width:100%;height:200px;" alt="Card image cap">
-                <div class="card-body">
-                  <p>GREEN DRESS<br><b> ₱500.00</b></p>
-                </div>
-
-                <div class="card-body">
-                    <button class="card-link">UPDATE </button>
-                    <button class="card-link">DELETE</button>
-                </div>
-
-
-            </div>
-        </div>
-
-
+    </center>
     </div>
-</div>
-<br>
+    <!-- Sidebar -->
+    <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
+        <h3 class="w3-bar-item mt-3">Menu</h3>
+        <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
+                aria-hidden="true"><br></i>Dashboard</a>
+        <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
+                aria-hidden="true"><br></i>Stocks</a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Products
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="gadgets" href="#">Gadgets</a>
+                <a class="dropdown-item" id="groceries" href="#">Groceries</a>
+                <a class="dropdown-item" id="clothes" href="#">Clothes</a>
+            </div>
+        </div>
+        <a href="#" class="w3-bar-item w3-button" id="users"><i class="fa fa-address-book"
+          aria-hidden="true"><br></i>Users</a>
+    </div>
+
+
+
+
+    <!-- content -->
+    <div class="container h-100 mr-3">
+        <div class="d-flex flex-row mx-auto mt-5">
+            <div class="container cont text-center">
+                <!-- search bar -->
+                <button type="button" class="btn btn-secondary float-right"><i class="fa fa-search"></i></button>
+                <div class="search float-right">
+                    <input type="text" class="form-control" placeholder="Search.." name="search">
+                </div>
+                <div class="container">
+                    <center>
+                        <h2><b>C L O T H E S</b></h2>
+                    </center>
+                </div>
+                <div class=" d-flex flex-wrap justify-content-start" id="products">
+                    <div>
+                        <span><strong>Retrieving the datas ...</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <script src="/static/js/main.js"></script>
     <script>
-      $(document).ready(() => {
-       // todos here
+        $(document).ready(() => {
+            //get the base url
+            let baseUrl = editUrl(window.location.href);
+            retrieveProductByCategory("clothes");
+        });
 
-      })
+
     </script>
-  </body>
-
-  </html>
 </body>
+<!-- Site footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mt-50px">
+                <h6>About</h6>
+                <p class="text-justify">Shop Inventory System <i></i></p>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>Product Categories</h6>
+                <ul class="footer-links">
+                    <li><a href="http://scanfcode.com/category/c-language/"></a>Gadgets</li>
+                    <li><a href="http://scanfcode.com/category/front-end-development/">Groceries</a></li>
+                    <li><a href="http://scanfcode.com/category/back-end-development/">Clothes</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="http://scanfcode.com/about/">About Us</a></li>
+                    <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+                    <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+                    <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
+                    <a href="#">Shop Inventory System</a>.
+                </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="social-icons">
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </html>

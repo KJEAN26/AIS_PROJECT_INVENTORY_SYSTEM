@@ -41,9 +41,15 @@ module.exports = {
         res.sendFile(path.join(basePath,"views/add_product.html"));
     },
 
-    // temporary route
+    // temporary routes
     gotoUsers(req, res){
         res.sendFile(path.join(basePath,"views/users.html"));
+    },
+    gotoEditUser(req, res){
+        res.sendFile(path.join(basePath,"views/edit_user.html"));
+    },
+    changeProfile(req, res){
+        res.sendFile(path.join(basePath,"views/profileEdit.html"));
     }
 
 };

@@ -1,9 +1,32 @@
 //Import Models
 const Users = require('../models/UserModel');
+//Import path
+const path = require('path');
 
 //import bycrypt
 const bycrypt = require('bcrypt');
 const salt = 10;
+
+//use multer
+const multer = require('multer');
+
+
+//set storage Engine
+const storage = multer.diskStorage({
+    destination:  function (req, file, cb) {
+        cb(null, "Public/image/user/")
+      },
+    filename: function(req, file, cb){
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    }
+});
+
+//initialized upload function
+const upload = multer({
+    storage: storage
+}).single('profilepic');
+
+
 
 //get jwt
 const jwtwebtoken = require('jsonwebtoken');
@@ -14,26 +37,42 @@ const accessTokenSecret = "thisisasecret!";
 module.exports = {
 
     getUsers(req, res) {
-        console.log("This is from get all user:",req.session.user);
         Users.find({}, (error, users) => {
             if (error) return res.status(500).send(error);
             return res.json({ "data": users });
         });
     },
 
-    //
+    getUserById(req, res){
+        const UserId = req.params.id;
+        Users.findById(UserId,(error, user)=>{
+            if(error) return res.status(500).send(error);
+            return res.json({"user": user});
+        });
+    },
+    
+    uploadUseProfile(req, res){
+        const userid = req.params.id;
+        upload(req, res,(error)=>{
+            if(error) return res.status(500).send(error);
+            Users.findByIdAndUpdate(userid,{$set: {profilepic: req.file.filename}},(error, user)=>{
+                if(error) return res.status(500).send(error);
+                return res.json(user);
+            });
+        });   
+    },
     updateUser(req, res) {
         const userId = req.params.id
         const userInfos = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             middlename: req.body.middlename,
-            password: req.body.password,
             age: req.body.age,
             role: req.body.role,
             email: req.body.email,
             gender: req.body.gender
         };
+        console.log(req.body);
         if(req.body.password){
             userInfos["password"] = bycrypt.hashSync(req.body.password, salt);
         }
