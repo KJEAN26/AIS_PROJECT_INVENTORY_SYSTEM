@@ -1,3 +1,10 @@
+/* for the product image */
+.productImage {
+  width: 80%;
+  height: 120px;
+}
+
+
 /* Graph*/
  #chart-container {
   height: 600px;

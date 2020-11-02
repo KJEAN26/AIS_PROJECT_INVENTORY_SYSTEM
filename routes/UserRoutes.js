@@ -10,6 +10,12 @@ const AUTH = require('../middleware/DataAuthorization');
 //get all users
 Router.get("/all", AUTH.authorized, userController.getUsers);
 
+//get user by id
+Router.get("/:id", AUTH.authorized, userController.getUserById);
+
+//change profile
+Router.post("/profile/:id", AUTH.authorized, userController.uploadUseProfile);
+
 //update user
 Router.put("/update_user/:id", AUTH.authorized, userController.updateUser);
 
