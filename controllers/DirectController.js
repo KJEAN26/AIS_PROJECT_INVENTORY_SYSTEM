@@ -21,24 +21,24 @@ module.exports = {
 
     //go to gadgets page
     gotToGadget(req, res){
-        res.sendFile(path.join(basePath, "views/gadgets.html"));
+        res.sendFile(path.join(basePath, "views/products/gadgets.html"));
     },
     //go to groceries page
     gotToGroceries(req, res){
-        res.sendFile(path.join(basePath, "views/groceries.html"));
+        res.sendFile(path.join(basePath, "views/products/groceries.html"));
     },
     //go to clothes page
     gotToClothes(req, res){
-        res.sendFile(path.join(basePath, "views/clothes.html"));
+        res.sendFile(path.join(basePath, "views/products/clothes.html"));
     },
   
     //go to stocks
     gotToStocks(req, res){
-        res.sendFile(path.join(basePath, "views/stocks.html"));
+        res.sendFile(path.join(basePath, "views/products/stocks.html"));
     },
     //go to add product
     goToAddNewProduct(req, res){
-        res.sendFile(path.join(basePath,"views/add_product.html"));
+        res.sendFile(path.join(basePath,"views/products/add_product.html"));
     },
 
     // temporary routes
@@ -50,6 +50,11 @@ module.exports = {
     },
     changeProfile(req, res){
         res.sendFile(path.join(basePath,"views/profileEdit.html"));
-    }
+    },
 
+
+    //error routes
+    unauthorized(req, res){
+        res.sendFile(path.join(basePath,"views/forbbids/401.html"));
+    }
 };

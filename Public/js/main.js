@@ -5,12 +5,16 @@ $(document).ready(() => {
     //Provides the name of the user in the upper right corner
     if (localStorage.getItem('token')) {
         let token = localStorage.getItem('token');
-        let userinfo = parseJwt(token).user;
+        let userinfo = parseJwt(token).user
         apiRequest(`/user/${userinfo._id}`, "get")
             .then((resolve) => {
                 $("#username")[0].innerText = resolve.user.firstname + " " + resolve.user.lastname;
                 //change also the profile here
                 $("#updateProfile").attr('src',`static/image/user/${resolve.user.profilepic}`);
+                if(resolve.user.role != "admin"){
+                    console.log($("#users"));
+                    $("#users").hide();
+                }
             }).catch((rejected) => {
                 console.log(rejected);
             })
@@ -59,14 +63,6 @@ $(document).ready(() => {
     //return to stocks
     $("#stocks").click(() => {
         window.location.href = `${baseUrl}stocks`;
-    });
-
-    $(".update").click((e)=>{
-        console.log(e);
-    });
-
-    $(".delete").click((e)=>{
-        console.log(e);
     });
 });
 
@@ -123,7 +119,7 @@ const retrieveProductByCategory = (category) => {
                     <p class="card-text">Price: Php ${product.productPrice}</p>
                 </div>
                 <button class="btn btn-primary text-center update">Update</button>
-                <button class="btn btn-danger text-center delete">Delete</button>
+                <button class="btn btn-danger  text-center delete"  id='${product._id}' >Delete</button>
             </div>
             `);
             }
