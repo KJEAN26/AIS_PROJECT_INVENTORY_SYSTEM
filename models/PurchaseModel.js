@@ -3,10 +3,15 @@ const Schema = mongoose.Schema;
 
 //create purchase schema
 const purchaseSchema = new Schema({
-    products: [{type: Schema.Types.ObjectId, ref: 'products', required: true}],
+    products: [
+        {
+            product: {type: Schema.Types.ObjectId, ref: 'products', required: true},
+            quantity: {type: Number, required: true}
+        }
+    ],
     createdAt: {type: Date, required: true, default: new Date()},
     deletedAt: {type: Date, default: null}
-});
+},{collection: 'purchases'});
 
 //create purchase model
 const purchaseModel = mongoose.model('PurchaseModel',purchaseSchema);

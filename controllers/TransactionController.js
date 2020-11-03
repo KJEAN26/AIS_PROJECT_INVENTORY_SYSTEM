@@ -12,7 +12,31 @@ module.exports = {
             return res.json({ "data": transactions });
         });
     },
-
+    //get all transaction and the populated value of purchases id
+    getAllTransactionsAndPopulates(req, res){
+        Transaction.find({}).populate('purchases')
+            .exec((error, transactions)=>{
+                if(error) return res.status(500).send(error);
+                return res.json({"data": transactions});
+            });
+    },
+    //getTransaction by id
+    getTransactionById(req, res){
+        const transacId = req.params.id;
+        Transaction.findById(transacId, (error, transaction)=>{
+            if(error) return res.status(500).send(error);
+            return res.json({"data": transaction});
+        });
+    },
+    //get transaction by id and the populated value of purchases id
+    getTransactionsAndPopulatesById(req, res){
+        const transacId = req.params.id;
+        Transaction.findById(transacId).populate('purchases')
+            .exec((error, transaction)=>{
+                if(error) return res.status(500).send(error);
+                return res.json({"data": transactions});
+            });
+    },
     // create transaction 
     addTransaction(req, res) {
         const newTransaction = new Transaction(req.body);
@@ -31,14 +55,4 @@ module.exports = {
                 return res.json(transaction);
             });
     },
-
-    //get transaction by id
-    getTransactionById(req, res) {
-        const transactionId = req.params.id;
-        Transaction.findById(transactionId, (error, transaction) => {
-            if (error) return res.status(500).send(error);
-            return res.json({ "transation": transaction });
-        });
-    }
-
 };
