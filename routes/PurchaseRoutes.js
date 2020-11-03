@@ -7,6 +7,9 @@ const PurchaseController = require('../controllers/PurchaseController');
 //get all purchases route
 Router.get('/all',PurchaseController.getAllPurchases);
 
+//get all purchases with populated value route
+Router.get('/populate/all',PurchaseController.getAllPurchasesWithPopulate);
+
 //delete by id route
 Router.delete('/delete/:id',PurchaseController.deletePurchase);
 

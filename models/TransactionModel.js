@@ -9,7 +9,7 @@ const transactionShema = new Schema({
     transactDescript: { type: String },
     createdAt: { type: Date, default: new Date() },
     deletedAt: { type: Date, default: null }
-});
+},{collection: 'transaction'});
 
 const transactionModel = mongoose.model('TransactionModel', transactionShema);
 

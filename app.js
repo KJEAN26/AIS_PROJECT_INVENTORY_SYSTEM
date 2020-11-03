@@ -51,7 +51,7 @@ app.use('/product',AUTH.authorized,productRoutes);
 
 //use purchase routes
 const purchaseRoutes = require("./routes/PurchaseRoutes");
-app.use('/purchase',AUTH.authorized,purchaseRoutes);
+app.use('/purchase',purchaseRoutes);
 
 //use transaction routes
 const transactionRoutes = require('./routes/TransactionRoutes');
