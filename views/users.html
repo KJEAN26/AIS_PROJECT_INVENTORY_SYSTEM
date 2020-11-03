@@ -8,7 +8,8 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="static/css/style.css">
@@ -20,6 +21,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -42,8 +44,8 @@
     <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
       <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px" height="50px"
         class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
-      <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt=""
-        data-toggle="dropdown"><strong id="username">Admin</strong></span>
+      <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt="" data-toggle="dropdown"><strong
+          id="username">Admin</strong></span>
       <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
 
         <button class="dropdown-item" id="editProfile" type="button">Edit Profile</button>
@@ -64,14 +66,14 @@
   <!-- Sidebar -->
   <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
     <h3 class="w3-bar-item mt-3">Menu</h3>
-    <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
+    <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer mr-2"
         aria-hidden="true"><br></i>Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
+    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o mr-2"
         aria-hidden="true"><br></i>Stocks</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money mr-2" aria-hidden="true"><br></i>Transactions</a>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+        aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart mr-2" aria-hidden="true"></i>
         Products
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -80,8 +82,7 @@
         <a class="dropdown-item" id="clothes" href="#">Clothes</a>
       </div>
     </div>
-    <a href="#" class="w3-bar-item w3-button" id="users"><i class="fa fa-address-book"
-      aria-hidden="true"><br></i>Users</a>
+    <a href="#" class="w3-bar-item w3-button" id="users"><i class="fa fa-user-circle-o mr-2" aria-hidden="true"></i>Users</a>
   </div>
 
 
@@ -90,27 +91,27 @@
   <!-- content -->
   <div class="container h-100 mr-3">
     <div class="d-flex flex-row mx-auto mt-5">
-        <div class="container cont text-center">
-            <h1>USER MANAGEMENT</h1>
-            <br>
-            <nav>
-                <a href="#" id="register_user" class="btn btn-secondary" >Register User</a>
-            </nav>
-                <div class="container tables ">
-                    <table class="table table-hover table-primary table-stripped">
-                        <thead>
-                            <tr>
-                              <th>Username</th>
-                              <th>Role</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody id="user">
-                            
-                          </tbody>
-                    </table>
-                </div>
+      <div class="container cont text-center">
+        <h1>USER MANAGEMENT</h1>
+        <br>
+        <nav>
+          <a href="#" id="register_user" class="btn btn-secondary">Register User</a>
+        </nav>
+        <div class="container tables ">
+          <table class="table table-hover table-primary table-stripped">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="user">
+
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
   </div>
 </body>
@@ -119,10 +120,10 @@
 <script src="/static/js/main.js"></script>
 <script>
   $(document).ready(() => {
-    apiRequest("/user/all","get")
-        .then((users)=>{
-            users.data.forEach(user => {
-                $("#user").append(`<tr>
+    apiRequest("/user/all", "get")
+      .then((users) => {
+        users.data.forEach(user => {
+          $("#user").append(`<tr>
                         <td>${user.firstname} ${user.lastname}</td>
                         <td>${user.role}</td>
                         <td type="button-group" role="group" >
@@ -130,17 +131,17 @@
                           <button type="button" class="btn btn-secondary">Disable</button>
                           </td>
                     </tr>`);
-            });
-        }).catch((error)=>{
-            console.log(error);
         });
+      }).catch((error) => {
+        console.log(error);
+      });
 
-        //redirect to register
-            //get the base path
-        const baseUrl = editUrl(window.location.href);
-        $("#register_user").click(()=>{
-            window.location.href=`${baseUrl}register`;
-        });
+    //redirect to register
+    //get the base path
+    const baseUrl = editUrl(window.location.href);
+    $("#register_user").click(() => {
+      window.location.href = `${baseUrl}register`;
+    });
 
   });
 
