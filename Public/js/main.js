@@ -30,6 +30,12 @@ $(document).ready(() => {
         window.location.href = `${baseUrl}edit-user`;
     });
 
+    //to transaction
+    $("#transact").click(()=>{
+        console.log("I was clicked");
+        window.location.href = `${baseUrl}transaction`;
+    });
+
     // reirect to gadgets
     $("#gadgets").click(() => {
         window.location.href = `${baseUrl}gadgets`;

@@ -3,10 +3,11 @@ const Schema = mongoose.Schema;
 
 //create purchase schema
 const purchaseSchema = new Schema({
-    products: [
+    purchase: [
         {
             product: {type: Schema.Types.ObjectId, ref: 'products', required: true},
-            quantity: {type: Number, required: true}
+            quantity: {type: Number, required: true},
+            _id: {id: false}
         }
     ],
     createdAt: {type: Date, required: true, default: new Date()},

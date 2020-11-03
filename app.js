@@ -60,5 +60,4 @@ app.use('/transaction',AUTH.authorized,transactionRoutes);
 //handle 404 pages
 app.use((req, res, next)=>{
     return res.sendFile(path.join(__dirname,"/views/forbbids/404.html"));
-})
-
+});

@@ -41,6 +41,11 @@ module.exports = {
         res.sendFile(path.join(basePath,"views/products/add_product.html"));
     },
 
+    //go to transactions
+    gotoTransactions(req, res){
+        res.sendFile(path.join(basePath, "views/products/transaction.html"));
+    },
+
     // temporary routes
     gotoUsers(req, res){
         res.sendFile(path.join(basePath,"views/users.html"));
@@ -51,7 +56,6 @@ module.exports = {
     changeProfile(req, res){
         res.sendFile(path.join(basePath,"views/profileEdit.html"));
     },
-
 
     //error routes
     unauthorized(req, res){

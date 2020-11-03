@@ -8,6 +8,8 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="static/css/style.css">
@@ -28,15 +30,14 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-  <title>Stocks</title>
 
+  <title>Transaction</title>
 </head>
 
 <body>
   <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:-50px;padding:20px;">
     <div class="logo">
       <img src="static/image/shop.png" class="logo">
-
     </div>
 
     <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
@@ -50,6 +51,7 @@
         <button class="dropdown-item" id="logout" type="button">Log Out</button>
       </div>
     </div>
+
     <center>
       <h1>SHOP INVENTORY SYSTEM</h1>
   </div>
@@ -62,7 +64,8 @@
         aria-hidden="true"><br></i>Dashboard</a>
     <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
         aria-hidden="true"><br></i>Stocks</a>
-    <a href="#" class="w3-bar-item w3-button"  id="transact"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
+    <a href="#" class="w3-bar-item w3-button" id="transact"><i class="fa fa-money"
+        aria-hidden="true"><br></i>Transactions</a>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -85,80 +88,58 @@
   <div class="container h-100 mr-3">
     <div class="d-flex flex-row mx-auto mt-5">
       <div class="container cont text-center">
-        <h1>STOCK MANAGEMENT</h1>
+        <h1>TRANSACTIONS</h1>
         <br>
-        <br>
-        <small>Click the buttons to see the stocks</small>
-        <nav>
-          <a href="#" id="gadget" class="btn btn-secondary">Gadgets</a>
-          <a href="#" id="grocery" class="btn btn-secondary">Groceries</a>
-          <a href="#" id="clothe" class="btn btn-secondary">Clothes</a>
-          <a href="#" id="add_product" class="btn btn-secondary">Add Product</a>
-        </nav>
-          <div class="container tables ">
+        <div class="container tables ">
+          <table class="table table-hover table-primary table-stripped">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="transaction">
 
-            <table id="gadget" class="table table-hover table-primary table-stripped">
-              <thead>
-                <tr>
-                  <th>Product Name</th>
-                  <th>Quantity</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="product_stocks">
-                <!-- content here -->
-
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-  <script src="/static/js/main.js"></script>
-  <script>
-    const retrieveProductByCategory1 = (category) => {
-      apiRequest(`/product/limited/${category}`, "get").then((products) => {
-        products.products_by_category.forEach(product => {
-          $("#product_stocks").append(`<tr>
-                        <td>${product.productName}</td>
-                        <td>${product.quantity}</td>
+</body>
+<script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+<script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+<script src="/static/js/main.js"></script>
+<script>
+  $(document).ready(() => {
+    apiRequest("/transaction/all", "get")
+      .then((users) => {
+        users.data.forEach(user => {
+          $("#transaction").append(`<tr>
+                        <td>${user.firstname} ${user.lastname}</td>
+                        <td>${user.role}</td>
                         <td type="button-group" role="group" >
                           <button type="button" class="btn btn-secondary">Update</button>
-                          <button type="button" class="btn btn-secondary">Delete</button>
+                          <button type="button" class="btn btn-secondary">Disable</button>
                           </td>
                     </tr>`);
         });
       }).catch((error) => {
         console.log(error);
       });
-    }
-    $(document).ready(() => {
-      //get the base url
-      let baseUrl = editUrl(window.location.href);
-      retrieveProductByCategory1("gadgets");
 
-      $("#gadget").click(() => {
-        $("#product_stocks").empty();
-        retrieveProductByCategory1("gadgets");
-      });
-
-      $("#grocery").click(() => {
-        $("#product_stocks").empty();
-        retrieveProductByCategory1("grocery");
-      });
-      $("#clothe").click(() => {
-        $("#product_stocks").empty();
-        retrieveProductByCategory1("clothes");
-      });
-
-      $("#add_product").click(() => {
-        window.location.href = `${baseUrl}add-product`;
-      });
-
+    //redirect to register
+    //get the base path
+    const baseUrl = editUrl(window.location.href);
+    $("#register_user").click(() => {
+      window.location.href = `${baseUrl}register`;
     });
 
+  });
 
-  </script>
+
+</script>
 </body>
 <!-- Site footer -->
 <footer class="site-footer">
@@ -211,4 +192,4 @@
   </div>
 </footer>
 
-</html> -->
+</html>
