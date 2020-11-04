@@ -1,1 +1,6 @@
-"# AIS_PROJECT_INVENTORY_SYSTEM" 
+Memebers 
+Sarah Mae Bautista
+Kyla Jean Dumaguit
+Harvey Aparece
+
+
