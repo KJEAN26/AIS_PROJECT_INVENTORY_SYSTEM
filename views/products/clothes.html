@@ -28,15 +28,15 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <title id="title">Gadgets</title>
+    <title id="title">Clothes</title>
 
 </head>
 
 <body>
+
     <div class="w3-container" style="position:fixed;z-index:2;width:100%; margin-top:-50px;padding:20px;">
         <div class="logo">
             <img src="static/image/shop.png" class="logo">
-
         </div>
 
         <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
@@ -63,7 +63,8 @@
                 aria-hidden="true"><br></i>Dashboard</a>
         <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
                 aria-hidden="true"><br></i>Stocks</a>
-        <a href="#" class="w3-bar-item w3-button" id="transact" ><i class="fa fa-money"aria-hidden="true"><br></i>Transactions</a>
+        <a href="#" class="w3-bar-item w3-button" id="transact"><i class="fa fa-money"
+                aria-hidden="true"><br></i>Transactions</a>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,6 +93,91 @@
                     <input type="text" class="form-control" placeholder="Search.." name="search">
                 </div>
                 <div class="container">
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body">
+                                        <form>
+
+                                            <div class="parent">
+                                                <div class="input-group form-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-user"></i></span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="productName"
+                                                        placeholder="Product Name" required>
+                                                </div>
+                                                <div class="input-group form-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-user"></i></span>
+                                                    </div>
+                                                    <input type="number" class="form-control" id="productPrice"
+                                                        placeholder="Product Price" required>
+                                                </div>
+
+                                            </div>
+                                            <div class="input-group form-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="number" class="form-control" id="quantity"
+                                                    placeholder="Quantity" required>
+
+                                            </div>
+                                            <div class="input-group form-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" value="Category:" readonly>
+                                                <div>
+                                                    <select id="category" class="form-control">
+                                                        <option value="grocery">GROCERY</option>
+                                                        <option value="gadgets">GADGET</option>
+                                                        <option value="clothes">CLOTHE</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="input-group form-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                </div>
+                                                <input type="text" value="Add Product Image: " class="form-control"
+                                                    readonly>
+                                            </div>
+                                            <div class="input-group form-group">
+                                                <div class="input-group-prepend">
+                                                </div>
+                                                <input type="file" id="file" class="form-control">
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <input type="button" id="sub" value="Add Product"
+                                                    class="btn float-right login_btn">
+                                                <input type="button" id="stocks" value="Stocks"
+                                                    class="btn float-left login_btn">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <center>
                         <h2><b>C L O T H E S</b></h2>
                     </center>
@@ -109,11 +195,11 @@
     <script>
         $(document).ready(() => {
             retrieveProductByCategory("clothes");
-            $(".update").on('click',(e) => {
+            $(".update").on('click', (e) => {
                 console.log(e);
             });
 
-            $(document).on('click','.delete',(e) => {
+            $(document).on('click', '.delete', (e) => {
                 console.log(e.target.id);
             });
         });

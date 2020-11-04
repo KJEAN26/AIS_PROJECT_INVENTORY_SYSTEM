@@ -124,7 +124,7 @@ const retrieveProductByCategory = (category) => {
                     <h5 class="card-title">${product.productName}</h5>
                     <p class="card-text">Price: Php ${product.productPrice}</p>
                 </div>
-                <button class="btn btn-primary text-center update">Update</button>
+                <button class="btn btn-primary text-center update" type="button" data-toggle="modal" data-target="#exampleModal">Update</button>
                 <button class="btn btn-danger  text-center delete"  id='${product._id}' >Delete</button>
             </div>
             `);
