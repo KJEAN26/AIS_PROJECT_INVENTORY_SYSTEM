@@ -53,7 +53,14 @@ module.exports = {
 
     //temporary
     adminOnly(req, res, next){
-        if(req.session.user.user.role == "employee") return res.redirect("unauthorized");
+        // console.log("This is user 1",req.session.user1);
+        let role;
+        if(req.session.user1){
+            role = req.session.user1.role;
+        }else{
+            role= req.session.user.user.role;
+        }
+        if(role == "employee") return res.redirect("unauthorized");
         next(); 
     },
     //all ready login

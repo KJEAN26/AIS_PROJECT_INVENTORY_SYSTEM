@@ -85,7 +85,7 @@
                             </div>
                             <input type="number" class="form-control" id="age" placeholder="Age" required>
                         </div>
-                        <div class="input-group form-group">
+                        <div id="roleEdit" class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
@@ -123,7 +123,9 @@
             //supply the needed information
             const User = parseJwt(localStorage.getItem('token'));
             apiRequest(`/user/${User.user._id}`, "get").then((user) => {
-                console.log(user);
+                if (user.user.role == "employee") {
+                    $("#roleEdit").hide();
+                }
                 $("#firstname").val(user.user.firstname);
                 $("#lastname").val(user.user.lastname);
                 $("#email").val(user.user.email);
