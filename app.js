@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const session =  require('express-session');
 
 //use session
-app.use(session({secret: "Thisisascret"}));
+app.use(session({secret: "Thisisascret",resave: false, saveUninitialized: false}));
 
 //Allow headers
 app.use(cors());

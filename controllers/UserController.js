@@ -72,14 +72,14 @@ module.exports = {
             email: req.body.email,
             gender: req.body.gender
         };
-        console.log(req.body);
         if (req.body.password) {
             userInfos["password"] = bycrypt.hashSync(req.body.password, salt);
         }
 
         Users.findOneAndUpdate({ _id: userId }, { $set: userInfos }, { new: true }, (error, user) => {
             if (error) return res.status(500).send(error);
-            req.session.user = user;
+            req.session.user1 = user;
+            console.log(req.session.user);
             return res.json({ "last_upated_user": user });
              
         });
