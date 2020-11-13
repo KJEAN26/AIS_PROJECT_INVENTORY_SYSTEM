@@ -1,4 +1,4 @@
-Memebers 
+Members 
 * Sarah Mae Bautista
 * Kyla Jean Dumaguit
 * Harvey Aparece
